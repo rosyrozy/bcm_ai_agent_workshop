@@ -12,13 +12,13 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black:   #0D0D0D;
-      --ink:     #1A1A1A;
-      --cream:   #F5F0E8;
-      --muted:   #8A8478;
-      --gold:    #E8C547;
-      --red:     #C0392B;
-      --dim:     #2A2A2A;
+      --black: #0D0D0D;
+      --ink:   #1A1A1A;
+      --cream: #F5F0E8;
+      --muted: #8A8478;
+      --gold:  #E8C547;
+      --red:   #C0392B;
+      --dim:   #2A2A2A;
     }
 
     html { scroll-behavior: smooth; }
@@ -31,7 +31,7 @@
       line-height: 1.75;
     }
 
-    /* ── SITE HEADER ─────────────────────────────── */
+    /* ── HEADER ── */
     .site-header {
       border-bottom: 1px solid var(--dim);
       padding: 1.5rem 2rem;
@@ -40,11 +40,10 @@
       justify-content: space-between;
       position: sticky;
       top: 0;
-      background: rgba(13,13,13,0.92);
+      background: rgba(13,13,13,0.94);
       backdrop-filter: blur(8px);
       z-index: 100;
     }
-
     .site-logo {
       font-family: 'Courier Prime', monospace;
       font-size: 1rem;
@@ -53,8 +52,8 @@
       color: var(--gold);
       text-decoration: none;
       text-transform: uppercase;
+      cursor: pointer;
     }
-
     .site-nav a {
       font-family: 'Inter', sans-serif;
       font-size: 0.78rem;
@@ -65,16 +64,11 @@
       text-decoration: none;
       margin-left: 2rem;
       transition: color 0.2s;
+      cursor: pointer;
     }
-    .site-nav a:hover { color: var(--cream); }
+    .site-nav a:hover, .site-nav a.active { color: var(--cream); }
 
-    /* ── HOMEPAGE INDEX ──────────────────────────── */
-    .index-hero {
-      padding: 6rem 2rem 4rem;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
+    /* ── SHARED EYEBROW ── */
     .eyebrow {
       font-family: 'Courier Prime', monospace;
       font-size: 0.72rem;
@@ -84,6 +78,14 @@
       margin-bottom: 1.5rem;
     }
 
+    /* ══════════════════════════════════════
+       INDEX PAGE
+    ══════════════════════════════════════ */
+    .index-hero {
+      padding: 6rem 2rem 4rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
     .index-hero h1 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.4rem, 6vw, 4.2rem);
@@ -92,7 +94,6 @@
       letter-spacing: -0.02em;
       margin-bottom: 1.5rem;
     }
-
     .index-hero p {
       font-size: 1.05rem;
       color: var(--muted);
@@ -101,14 +102,13 @@
     }
 
     .card-grid {
-      max-width: 900px;
+      max-width: 960px;
       margin: 3rem auto 6rem;
       padding: 0 2rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
       gap: 2px;
     }
-
     .film-card {
       background: var(--ink);
       padding: 2.5rem;
@@ -119,6 +119,7 @@
       transition: border-color 0.25s, background 0.25s;
       position: relative;
       overflow: hidden;
+      cursor: pointer;
     }
     .film-card::after {
       content: '';
@@ -130,7 +131,6 @@
     }
     .film-card:hover { background: #222; border-color: #444; }
     .film-card:hover::after { width: 100%; }
-
     .card-meta {
       font-family: 'Courier Prime', monospace;
       font-size: 0.7rem;
@@ -139,7 +139,6 @@
       color: var(--gold);
       margin-bottom: 1rem;
     }
-
     .card-title {
       font-family: 'Playfair Display', serif;
       font-size: 1.9rem;
@@ -147,19 +146,16 @@
       line-height: 1.15;
       margin-bottom: 0.6rem;
     }
-
     .card-director {
       font-size: 0.82rem;
       color: var(--muted);
       margin-bottom: 1.2rem;
     }
-
     .card-excerpt {
       font-size: 0.9rem;
       color: #9A9590;
       line-height: 1.7;
     }
-
     .card-cta {
       display: inline-block;
       margin-top: 1.8rem;
@@ -170,18 +166,122 @@
       color: var(--gold);
     }
 
-    /* ── ARTICLE PAGE ────────────────────────────── */
+    /* ══════════════════════════════════════
+       DIRECTORY PAGE
+    ══════════════════════════════════════ */
+    .dir-hero {
+      padding: 6rem 2rem 3rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .dir-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .dir-hero p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .directory {
+      max-width: 860px;
+      margin: 2rem auto 6rem;
+      padding: 0 2rem;
+    }
+    .dir-count {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid var(--dim);
+    }
+    .film-row {
+      display: grid;
+      grid-template-columns: 2rem 1fr max-content 2rem;
+      align-items: center;
+      gap: 0 1.5rem;
+      padding: 1.3rem 0.5rem;
+      border-bottom: 1px solid var(--dim);
+      cursor: pointer;
+      transition: background 0.18s;
+      border-radius: 2px;
+    }
+    .film-row:hover { background: var(--ink); }
+    .film-row:hover .row-title { color: var(--gold); }
+    .film-row:hover .row-arrow { opacity: 1; }
+
+    .row-num {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+    .row-info { min-width: 0; }
+    .row-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      transition: color 0.18s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .row-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+    .row-genre {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .row-arrow {
+      color: var(--gold);
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: opacity 0.18s;
+    }
+
+    /* ══════════════════════════════════════
+       ARTICLE PAGE
+    ══════════════════════════════════════ */
     .article-page { display: none; }
 
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      margin: 2rem;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--cream); }
+
     .film-hero {
-      padding: 5rem 2rem 4rem;
+      padding: 3rem 2rem 4rem;
       border-bottom: 1px solid var(--dim);
       max-width: 760px;
       margin: 0 auto;
     }
-
     .film-hero .eyebrow { margin-bottom: 1.2rem; }
-
     .film-title {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.8rem, 8vw, 5.5rem);
@@ -190,7 +290,6 @@
       letter-spacing: -0.03em;
       margin-bottom: 0.6rem;
     }
-
     .film-subtitle {
       font-family: 'Playfair Display', serif;
       font-style: italic;
@@ -198,7 +297,6 @@
       color: var(--muted);
       margin-bottom: 2rem;
     }
-
     .film-meta-row {
       display: flex;
       flex-wrap: wrap;
@@ -210,7 +308,6 @@
       color: var(--muted);
       margin-bottom: 2.5rem;
     }
-
     .spoiler-banner {
       background: var(--red);
       color: #fff;
@@ -224,25 +321,13 @@
       gap: 0.8rem;
       margin-bottom: 2.5rem;
     }
-
-    .spoiler-icon {
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-
     .rating-row {
       display: flex;
       align-items: center;
       gap: 0.8rem;
       margin-bottom: 1.5rem;
     }
-
-    .stars {
-      color: var(--gold);
-      font-size: 1.1rem;
-      letter-spacing: 2px;
-    }
-
+    .stars { color: var(--gold); font-size: 1.1rem; letter-spacing: 2px; }
     .rating-label {
       font-family: 'Courier Prime', monospace;
       font-size: 0.7rem;
@@ -251,13 +336,12 @@
       color: var(--muted);
     }
 
-    /* ── ARTICLE BODY ────────────────────────────── */
+    /* ── Article body ── */
     .article-body {
       max-width: 680px;
       margin: 0 auto;
       padding: 4rem 2rem 8rem;
     }
-
     .section-marker {
       display: flex;
       align-items: center;
@@ -266,7 +350,6 @@
       margin-top: 4rem;
     }
     .section-marker:first-child { margin-top: 0; }
-
     .frame-count {
       font-family: 'Courier Prime', monospace;
       font-size: 0.68rem;
@@ -274,13 +357,7 @@
       color: var(--gold);
       flex-shrink: 0;
     }
-
-    .frame-rule {
-      flex: 1;
-      height: 1px;
-      background: var(--dim);
-    }
-
+    .frame-rule { flex: 1; height: 1px; background: var(--dim); }
     .section-heading {
       font-family: 'Playfair Display', serif;
       font-size: 1.55rem;
@@ -288,20 +365,17 @@
       line-height: 1.25;
       margin-bottom: 1.2rem;
     }
-
     .article-body p {
       color: #C8C2B8;
       font-size: 1.02rem;
       line-height: 1.85;
       margin-bottom: 1.4rem;
     }
-
     .pull-quote {
       border-left: 3px solid var(--gold);
       margin: 2.5rem 0;
       padding: 0.5rem 0 0.5rem 1.8rem;
     }
-
     .pull-quote p {
       font-family: 'Playfair Display', serif;
       font-style: italic;
@@ -310,7 +384,6 @@
       color: var(--cream);
       margin-bottom: 0;
     }
-
     .pull-quote cite {
       display: block;
       margin-top: 0.8rem;
@@ -321,13 +394,11 @@
       text-transform: uppercase;
       color: var(--muted);
     }
-
     .verdict-box {
       border: 1px solid var(--gold);
       padding: 2rem 2rem 1.8rem;
       margin-top: 4rem;
     }
-
     .verdict-label {
       font-family: 'Courier Prime', monospace;
       font-size: 0.68rem;
@@ -336,7 +407,6 @@
       color: var(--gold);
       margin-bottom: 1rem;
     }
-
     .verdict-text {
       font-family: 'Playfair Display', serif;
       font-size: 1.15rem;
@@ -345,22 +415,7 @@
       margin-bottom: 0 !important;
     }
 
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: 'Courier Prime', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      margin: 2rem;
-      transition: color 0.2s;
-    }
-    .back-link:hover { color: var(--cream); }
-
-    /* ── FOOTER ──────────────────────────────────── */
+    /* ── FOOTER ── */
     .site-footer {
       border-top: 1px solid var(--dim);
       padding: 2rem;
@@ -373,519 +428,862 @@
     }
 
     @media (max-width: 600px) {
-      .card-grid { grid-template-columns: 1fr; gap: 1px; }
+      .card-grid { grid-template-columns: 1fr; }
       .site-nav { display: none; }
+      .film-row { grid-template-columns: 2rem 1fr 2rem; }
+      .row-genre { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── SITE HEADER ── -->
-  <header class="site-header">
-    <a href="#" class="site-logo" onclick="showIndex()">Frame One</a>
-    <nav class="site-nav">
-      <a href="#" onclick="showIndex()">All Films</a>
-    </nav>
-  </header>
+<!-- ── HEADER ── -->
+<header class="site-header">
+  <span class="site-logo" onclick="showPage('index')">Frame One</span>
+  <nav class="site-nav">
+    <a onclick="showPage('index')" id="nav-index">Latest</a>
+    <a onclick="showPage('directory')" id="nav-directory">A–Z Directory</a>
+  </nav>
+</header>
 
-  <!-- ══════════════════════════════════════════════
-       INDEX PAGE
-  ══════════════════════════════════════════════════ -->
-  <div id="index-page">
-    <div class="index-hero">
-      <p class="eyebrow">[ Film Analysis ]</p>
-      <h1>Cinema, dissected<br/>frame by frame.</h1>
-      <p>Close readings of films that demand more than one watch — examining craft, subtext, and the choices directors make when they think you're not looking.</p>
-    </div>
-
-    <div class="card-grid">
-
-      <!-- Card: Whiplash -->
-      <a class="film-card" href="#" onclick="showArticle('whiplash')">
-        <p class="card-meta">[ 001 ] — Drama / 2014</p>
-        <h2 class="card-title">Whiplash</h2>
-        <p class="card-director">Dir. Damien Chazelle</p>
-        <p class="card-excerpt">A conservatory student and a sadistic conductor locked in a war of wills. But who is actually controlling whom — and what does the film think greatness costs?</p>
-        <span class="card-cta">Read Analysis →</span>
-      </a>
-
-      <!-- Card: Get Out -->
-      <a class="film-card" href="#" onclick="showArticle('getout')">
-        <p class="card-meta">[ 002 ] — Horror / 2017</p>
-        <h2 class="card-title">Get Out</h2>
-        <p class="card-director">Dir. Jordan Peele</p>
-        <p class="card-excerpt">A Black man visits his white girlfriend's family estate. What unfolds is one of the most precisely engineered horror films ever made — and a direct conversation about race in America.</p>
-        <span class="card-cta">Read Analysis →</span>
-      </a>
-
-      <!-- Card: Fight Club -->
-      <a class="film-card" href="#" onclick="showArticle('fightclub')">
-        <p class="card-meta">[ 003 ] — Thriller / 1999</p>
-        <h2 class="card-title">Fight Club</h2>
-        <p class="card-director">Dir. David Fincher</p>
-        <p class="card-excerpt">An insomniac office drone meets a soap salesman and starts an underground fight ring. Fincher's adaptation is a precision instrument — and far more uncomfortable than its cultural legacy suggests.</p>
-        <span class="card-cta">Read Analysis →</span>
-      </a>
-
-      <!-- Card: The Godfather -->
-      <a class="film-card" href="#" onclick="showArticle('godfather')">
-        <p class="card-meta">[ 004 ] — Crime / 1972</p>
-        <h2 class="card-title">The Godfather</h2>
-        <p class="card-director">Dir. Francis Ford Coppola</p>
-        <p class="card-excerpt">The definitive American crime film — and a tragedy about inheritance, corruption, and the slow erasure of a man's soul. Coppola makes it look inevitable.</p>
-        <span class="card-cta">Read Analysis →</span>
-      </a>
-
-      <!-- Card: Parasite -->
-      <a class="film-card" href="#" onclick="showArticle('parasite')">
-        <p class="card-meta">[ 005 ] — Thriller / 2019</p>
-        <h2 class="card-title">Parasite</h2>
-        <p class="card-director">Dir. Bong Joon-ho</p>
-        <p class="card-excerpt">A poor family infiltrates a wealthy household one by one. Bong Joon-ho's genre-defying masterpiece holds a mirror up to class — and dares you to look at what's reflected back.</p>
-        <span class="card-cta">Read Analysis →</span>
-      </a>
-
-    </div>
+<!-- ══════════════════════════════════════════════
+     INDEX PAGE
+══════════════════════════════════════════════════ -->
+<div id="page-index">
+  <div class="index-hero">
+    <p class="eyebrow">[ Film Analysis ]</p>
+    <h1>Cinema, dissected<br/>frame by frame.</h1>
+    <p>Close readings of films that demand more than one watch — examining craft, subtext, and the choices directors make when they think you're not looking.</p>
   </div>
 
-  <!-- ══════════════════════════════════════════════
-       ARTICLE: WHIPLASH
-  ══════════════════════════════════════════════════ -->
-  <div id="article-whiplash" class="article-page">
-    <a class="back-link" href="#" onclick="showIndex()">← All Films</a>
+  <div class="card-grid">
 
-    <div class="film-hero">
-      <p class="eyebrow">[ 001 ] — Drama · 2014 · 107 min</p>
-      <h1 class="film-title">Whiplash</h1>
-      <p class="film-subtitle">The cost of greatness, and who gets to decide what that means.</p>
-      <div class="film-meta-row">
-        <span>Dir. Damien Chazelle</span>
-        <span>·</span>
-        <span>DoP: Sharone Meir</span>
-        <span>·</span>
-        <span>Ed. Tom Cross</span>
-      </div>
-      <div class="spoiler-banner">
-        <span class="spoiler-icon">⚠</span>
-        <span>Full spoilers ahead — this analysis discusses the film's ending in detail.</span>
-      </div>
-      <div class="rating-row">
-        <span class="stars">★★★★★</span>
-        <span class="rating-label">Essential</span>
-      </div>
+    <div class="film-card" onclick="showArticle('whiplash')">
+      <p class="card-meta">[ Drama · 2014 ]</p>
+      <h2 class="card-title">Whiplash</h2>
+      <p class="card-director">Dir. Damien Chazelle</p>
+      <p class="card-excerpt">A conservatory student and a sadistic conductor locked in a war of wills. But who is actually controlling whom — and what does the film think greatness costs?</p>
+      <span class="card-cta">Read Analysis →</span>
     </div>
 
-    <div class="article-body">
-
-      <!-- 001 -->
-      <div class="section-marker">
-        <span class="frame-count">[ 001 ]</span>
-        <div class="frame-rule"></div>
-      </div>
-      <h2 class="section-heading">The Setup: A War Disguised as a Mentorship</h2>
-      <p>Damien Chazelle's <em>Whiplash</em> opens with a drum kit in darkness and a 19-year-old named Andrew Neiman (Miles Teller) practicing alone. It's a deceptively quiet image for a film that will become one of the most viscerally intense experiences modern cinema has produced. Andrew is a first-year student at the fictional Shaffer Conservatory, and when he's discovered by Terence Fletcher (J.K. Simmons) — the school's feared conductor — you sense immediately that something predatory has just made contact with something ambitious enough to be prey.</p>
-      <p>The film's central dynamic is framed as mentorship, but Chazelle is at pains to make sure we understand it is nothing of the sort. Fletcher does not want to develop Andrew. He wants to find out what Andrew is made of — and if Andrew breaks in the process, that is not Fletcher's problem, because broken students aren't great musicians and never would have been. This Darwinian logic is the film's central moral argument, and the film spends its full 107 minutes testing whether that logic holds.</p>
-
-      <div class="pull-quote">
-        <p>"There are no two words in the English language more harmful than 'good job.'"</p>
-        <cite>— Terence Fletcher</cite>
-      </div>
-
-      <!-- 002 -->
-      <div class="section-marker">
-        <span class="frame-count">[ 002 ]</span>
-        <div class="frame-rule"></div>
-      </div>
-      <h2 class="section-heading">Craft: The Camera as Drumstick</h2>
-      <p>Chazelle and cinematographer Sharone Meir make the camera itself rhythmic. Close-ups on hands, sticks, drum skins, and Andrew's bloodied fingers accumulate into a percussive edit language that mirrors the music on screen. Tom Cross's editing earned him an Oscar for good reason: the film's finale, a relentless jazz performance that unspools for nearly ten minutes, is cut with the precision of the very music it depicts. The editing <em>is</em> the drumming.</p>
-      <p>The colour palette is bruised and sweaty — amber rehearsal rooms, fluorescent hallways, the sickly green of a hospital ward. The Shaffer Conservatory is presented not as an institution of culture but as an industrial space where people are processed. There is nothing romantic about the aesthetic. Chazelle is deliberately defusing the myth of the tortured artist before we can settle into it.</p>
-
-      <!-- 003 -->
-      <div class="section-marker">
-        <span class="frame-count">[ 003 ]</span>
-        <div class="frame-rule"></div>
-      </div>
-      <h2 class="section-heading">The Film's Moral Ambiguity (And Why It's Intentional)</h2>
-      <p><em>Whiplash</em> has been accused of endorsing Fletcher's methodology. This reading is understandable but shallow. The film shows us the full cost of Andrew's obsession: he destroys a relationship with a woman he genuinely likes, lying to himself about why; he estranges his father, the only person who actually loves him; he causes a car crash that he then walks away from, bleeding, because he would rather perform concussed than miss his chance. This is not portrayed as heroic. It is portrayed as compulsion — barely distinguishable from self-destruction.</p>
-      <p>What the film refuses to do is offer a clean verdict. The ending — Andrew finally playing the Charlie Parker set from memory, pushing the band into a transcendent performance Fletcher did not plan — can be read as triumph or as the film's darkest joke. Andrew has won the battle, but only by becoming the thing Fletcher wanted him to become: someone who cannot stop even when the world tells him to. He has been fully made in Fletcher's image. Whether that's greatness or just a particularly glamorous ruin is a question the film deliberately leaves open.</p>
-
-      <div class="pull-quote">
-        <p>The final shot cuts to black mid-cymbal crash. No resolution, no breath. Just the moment, and then silence. Chazelle doesn't let you applaud.</p>
-        <cite>— Frame One</cite>
-      </div>
-
-      <!-- 004 -->
-      <div class="section-marker">
-        <span class="frame-count">[ 004 ]</span>
-        <div class="frame-rule"></div>
-      </div>
-      <h2 class="section-heading">Simmons and Teller: A Two-Hander at Full Volume</h2>
-      <p>J.K. Simmons' performance is one of the great screen villain turns, with the asterisk that Fletcher never behaves as if he is a villain. He is utterly sincere. When he tells the story of his late student late in the film — a story designed to show Andrew that he is not the monster history has made him — Simmons plays it with such quiet grief that you almost believe him. Then you remember the student died by suicide and you are not sure what to believe. That disorientation is the performance.</p>
-      <p>Teller, coming off a run of lighter work, is a revelation in the physical demands of the role alone — he actually learned to play at performance level — but more importantly, he calibrates Andrew's emptiness with care. Andrew is not likable, and the film knows that. He's ambitious in a way that has calcified into something inhuman. Teller makes that legible without asking for your sympathy.</p>
-
-      <!-- VERDICT -->
-      <div class="verdict-box">
-        <p class="verdict-label">[ Verdict ]</p>
-        <p class="verdict-text"><em>Whiplash</em> is a film about the price of obsession that refuses to tell you whether the price was worth it. That refusal is exactly what makes it great — and deeply uncomfortable to revisit. It stays with you not because it answers its own questions, but because it makes the questions feel personal.</p>
-      </div>
-
+    <div class="film-card" onclick="showArticle('getout')">
+      <p class="card-meta">[ Horror · 2017 ]</p>
+      <h2 class="card-title">Get Out</h2>
+      <p class="card-director">Dir. Jordan Peele</p>
+      <p class="card-excerpt">A Black man visits his white girlfriend's family estate. What unfolds is one of the most precisely engineered horror films ever made — and a direct conversation about race in America.</p>
+      <span class="card-cta">Read Analysis →</span>
     </div>
+
+    <div class="film-card" onclick="showArticle('fightclub')">
+      <p class="card-meta">[ Thriller · 1999 ]</p>
+      <h2 class="card-title">Fight Club</h2>
+      <p class="card-director">Dir. David Fincher</p>
+      <p class="card-excerpt">An insomniac office drone meets a soap salesman and starts an underground fight ring. Fincher's film is a precision instrument — and far more uncomfortable than its cultural legacy suggests.</p>
+      <span class="card-cta">Read Analysis →</span>
+    </div>
+
+    <div class="film-card" onclick="showArticle('godfather')">
+      <p class="card-meta">[ Crime · 1972 ]</p>
+      <h2 class="card-title">The Godfather</h2>
+      <p class="card-director">Dir. Francis Ford Coppola</p>
+      <p class="card-excerpt">The definitive American crime film — and a tragedy about inheritance, corruption, and the slow erasure of a man's soul. Coppola makes it look inevitable.</p>
+      <span class="card-cta">Read Analysis →</span>
+    </div>
+
+    <div class="film-card" onclick="showArticle('parasite')">
+      <p class="card-meta">[ Thriller · 2019 ]</p>
+      <h2 class="card-title">Parasite</h2>
+      <p class="card-director">Dir. Bong Joon-ho</p>
+      <p class="card-excerpt">A poor family infiltrates a wealthy household one by one. Bong Joon-ho's genre-defying masterpiece holds a mirror up to class — and dares you to look at what's reflected back.</p>
+      <span class="card-cta">Read Analysis →</span>
+    </div>
+
+    <div class="film-card" onclick="showArticle('inception')">
+      <p class="card-meta">[ Sci-Fi · 2010 ]</p>
+      <h2 class="card-title">Inception</h2>
+      <p class="card-director">Dir. Christopher Nolan</p>
+      <p class="card-excerpt">A thief who steals secrets through dreams is asked to plant one instead. Nolan's most technically ambitious film — and the one most people have wrong.</p>
+      <span class="card-cta">Read Analysis →</span>
+    </div>
+
+    <div class="film-card" onclick="showArticle('spiritedaway')">
+      <p class="card-meta">[ Animation · 2001 ]</p>
+      <h2 class="card-title">Spirited Away</h2>
+      <p class="card-director">Dir. Hayao Miyazaki</p>
+      <p class="card-excerpt">A ten-year-old girl wanders into a spirit world and has to work her way back. Miyazaki's magnum opus operates on the dream logic of a child — and the grief of growing up.</p>
+      <span class="card-cta">Read Analysis →</span>
+    </div>
+
+    <div class="film-card" onclick="showArticle('memento')">
+      <p class="card-meta">[ Neo-Noir · 2000 ]</p>
+      <h2 class="card-title">Memento</h2>
+      <p class="card-director">Dir. Christopher Nolan</p>
+      <p class="card-excerpt">A man with no short-term memory hunts his wife's killer. The structure is the argument: Nolan makes you feel, not just understand, what it means to be deceived by your own narrative.</p>
+      <span class="card-cta">Read Analysis →</span>
+    </div>
+
+    <div class="film-card" onclick="showArticle('shining')">
+      <p class="card-meta">[ Horror · 1980 ]</p>
+      <h2 class="card-title">The Shining</h2>
+      <p class="card-director">Dir. Stanley Kubrick</p>
+      <p class="card-excerpt">A family winters alone in a haunted hotel. Kubrick's adaptation of King strips the supernatural down to something colder — the architecture of domestic violence.</p>
+      <span class="card-cta">Read Analysis →</span>
+    </div>
+
+    <div class="film-card" onclick="showArticle('shawshank')">
+      <p class="card-meta">[ Drama · 1994 ]</p>
+      <h2 class="card-title">The Shawshank Redemption</h2>
+      <p class="card-director">Dir. Frank Darabont</p>
+      <p class="card-excerpt">Two men form an unlikely friendship inside a brutal prison. The most beloved film on the internet — but is there more going on beneath the warmth than the discourse admits?</p>
+      <span class="card-cta">Read Analysis →</span>
+    </div>
+
+    <div class="film-card" onclick="showArticle('interstellar')">
+      <p class="card-meta">[ Sci-Fi · 2014 ]</p>
+      <h2 class="card-title">Interstellar</h2>
+      <p class="card-director">Dir. Christopher Nolan</p>
+      <p class="card-excerpt">A former pilot leaves his family to cross the galaxy and save humanity. Nolan's most emotionally naked film — and the one where the science and the sentiment are finally inseparable.</p>
+      <span class="card-cta">Read Analysis →</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     DIRECTORY PAGE
+══════════════════════════════════════════════════ -->
+<div id="page-directory" style="display:none;">
+  <div class="dir-hero">
+    <p class="eyebrow">[ A–Z Directory ]</p>
+    <h1>All Films</h1>
+    <p>Every entry in the archive, sorted alphabetically.</p>
   </div>
 
-  <!-- ══════════════════════════════════════════════
-       ARTICLE: GET OUT
-  ══════════════════════════════════════════════════ -->
-  <div id="article-getout" class="article-page">
-    <a class="back-link" href="#" onclick="showIndex()">← All Films</a>
+  <div class="directory">
+    <p class="dir-count">11 entries</p>
 
-    <div class="film-hero">
-      <p class="eyebrow">[ 002 ] — Horror · 2017 · 104 min</p>
-      <h1 class="film-title">Get Out</h1>
-      <p class="film-subtitle">The politest horror film ever made — and the most frightening.</p>
-      <div class="film-meta-row">
-        <span>Dir. Jordan Peele</span>
-        <span>·</span>
-        <span>DoP: Toby Oliver</span>
-        <span>·</span>
-        <span>Ed. Gregory Plotkin</span>
+    <div class="film-row" onclick="showArticle('fightclub')">
+      <span class="row-num">A</span>
+      <div class="row-info">
+        <div class="row-title">Fight Club</div>
+        <div class="row-meta">David Fincher · 1999</div>
       </div>
-      <div class="spoiler-banner">
-        <span class="spoiler-icon">⚠</span>
-        <span>Full spoilers ahead — this analysis discusses the Coagula procedure and the film's ending.</span>
-      </div>
-      <div class="rating-row">
-        <span class="stars">★★★★★</span>
-        <span class="rating-label">Essential</span>
-      </div>
+      <span class="row-genre">Thriller</span>
+      <span class="row-arrow">→</span>
     </div>
 
-    <div class="article-body">
-
-      <!-- 001 -->
-      <div class="section-marker">
-        <span class="frame-count">[ 001 ]</span>
-        <div class="frame-rule"></div>
+    <div class="film-row" onclick="showArticle('getout')">
+      <span class="row-num">B</span>
+      <div class="row-info">
+        <div class="row-title">Get Out</div>
+        <div class="row-meta">Jordan Peele · 2017</div>
       </div>
-      <h2 class="section-heading">The Architecture of Dread: Politeness as Horror</h2>
-      <p>Jordan Peele's directorial debut opens with a Black man walking alone at night in a white suburb, and before anything has happened — before a word of dialogue, before a single scare — the scene has established its thesis. The horror of <em>Get Out</em> is not monstrous or supernatural. It is entirely, recognisably human. It is the horror of a Black man having to be careful in a country that has decided it is over being racist, while simultaneously not being over it at all.</p>
-      <p>Chris Washington (Daniel Kaluuya) travels upstate to meet his white girlfriend Rose's (Allison Williams) family for the first time. The Armitage estate is beautiful, tasteful, and staffed by Black workers who smile too wide and blink too slow. Peele sets up a masterclass in escalating wrongness — nothing that happens in the first half of the film is overtly threatening. The horror is entirely social. It is the horror of a room that is overly nice to you in a way that makes you feel like a specimen.</p>
+      <span class="row-genre">Horror</span>
+      <span class="row-arrow">→</span>
+    </div>
 
-      <div class="pull-quote">
-        <p>"No matter how bad things get, when you sink into the Sunken Place, you feel like you're floating. You see what's happening, but you can't stop it."</p>
-        <cite>— Missy Armitage</cite>
+    <div class="film-row" onclick="showArticle('godfather')">
+      <span class="row-num">C</span>
+      <div class="row-info">
+        <div class="row-title">The Godfather</div>
+        <div class="row-meta">Francis Ford Coppola · 1972</div>
       </div>
+      <span class="row-genre">Crime</span>
+      <span class="row-arrow">→</span>
+    </div>
 
-      <!-- 002 -->
-      <div class="section-marker">
-        <span class="frame-count">[ 002 ]</span>
-        <div class="frame-rule"></div>
+    <div class="film-row" onclick="showArticle('inception')">
+      <span class="row-num">D</span>
+      <div class="row-info">
+        <div class="row-title">Inception</div>
+        <div class="row-meta">Christopher Nolan · 2010</div>
       </div>
-      <h2 class="section-heading">The Sunken Place: The Film's Central Metaphor</h2>
-      <p>When Missy Armitage (Catherine Keener) hypnotises Chris into the Sunken Place — a state of paralytic consciousness where he can see but cannot act — Peele gives us the film's central image. Chris falls backward through darkness, staring up at a tiny television screen that shows his own body moving without his control. It is one of the most economical visual metaphors in recent American cinema: the Black body, made a spectacle of itself, reduced to a passenger in its own experience.</p>
-      <p>The Sunken Place is not just a horror device. It is a direct visual argument about a specific form of racial oppression: one in which the consciousness, the inner life, the person is present and aware and screaming — but systemically unable to act. Peele has described it as a metaphor for the way systemic racism operates: the sensation of being inside a body that the world has decided it can use as it chooses.</p>
-      <p>What makes the metaphor so precise is that it comes with a trigger: a cup of tea, a stirring spoon, a performance of calm. The Armitages don't use violence. They use social ritual.</p>
+      <span class="row-genre">Sci-Fi</span>
+      <span class="row-arrow">→</span>
+    </div>
 
-      <!-- 003 -->
-      <div class="section-marker">
-        <span class="frame-count">[ 003 ]</span>
-        <div class="frame-rule"></div>
+    <div class="film-row" onclick="showArticle('interstellar')">
+      <span class="row-num">E</span>
+      <div class="row-info">
+        <div class="row-title">Interstellar</div>
+        <div class="row-meta">Christopher Nolan · 2014</div>
       </div>
-      <h2 class="section-heading">The Coagula Procedure: Fetishisation as Literal Horror</h2>
-      <p>The film's third act reveals the full mechanism: the Armitage family conducts a procedure called Coagula, in which a white person's brain is transplanted into a Black host body. The Black consciousness is not destroyed — it is pushed into the Sunken Place, alive, aware, watching. The white transplant recipient gets to inhabit a Black body they have selected, often for its physical attributes: athletic ability, perceived vitality, cultural cachet.</p>
-      <p>This is the film converting subtext into text. What the Coagula procedure literalises is fetishisation — the reduction of a Black person to their body, stripped of interiority, desired for physical characteristics rather than personhood. The bidding guests at the Armitage party are not villains in the conventional sense. They are enthusiasts. One wants Chris's eyes. One wants his physique. A Black character is already in the program and tells Chris cheerfully that it is "a privilege" to be there. He has been so thoroughly displaced that his remaining consciousness has absorbed the ideology of his captors. Peele does not let this be subtle.</p>
+      <span class="row-genre">Sci-Fi</span>
+      <span class="row-arrow">→</span>
+    </div>
 
-      <div class="pull-quote">
-        <p>The Armitages are not bigots in the traditional sense. They love Black culture — they just want to own it. That distinction is the film's entire argument.</p>
-        <cite>— Frame One</cite>
+    <div class="film-row" onclick="showArticle('memento')">
+      <span class="row-num">F</span>
+      <div class="row-info">
+        <div class="row-title">Memento</div>
+        <div class="row-meta">Christopher Nolan · 2000</div>
       </div>
+      <span class="row-genre">Neo-Noir</span>
+      <span class="row-arrow">→</span>
+    </div>
 
-      <!-- 004 -->
-      <div class="section-marker">
-        <span class="frame-count">[ 004 ]</span>
-        <div class="frame-rule"></div>
+    <div class="film-row" onclick="showArticle('parasite')">
+      <span class="row-num">G</span>
+      <div class="row-info">
+        <div class="row-title">Parasite</div>
+        <div class="row-meta">Bong Joon-ho · 2019</div>
       </div>
-      <h2 class="section-heading">Kaluuya, Form, and the Craft of Building Tension</h2>
-      <p>Daniel Kaluuya was already a formidable actor before <em>Get Out</em>, but this performance is the one that showed audiences what he is capable of. The specific challenge is that Chris must be readable without tipping into parody — he has to notice the wrongness of the Armitage estate without fully trusting his own perception, because the film is also about the way Black people are trained to second-guess their instincts in social settings where making an accusation carries social cost. Kaluuya plays all of this in the eyes and the shoulders, registering discomfort and then suppressing it, over and over.</p>
-      <p>Toby Oliver's cinematography works in close collaboration with this performance. The camera often stays tight on Chris's face while the background goes slightly soft — we are watching his experience rather than the room. The Armitage estate is shot as though it belongs on an estate agent listing; it is deliberately too beautiful, too manicured, too exposed. There are no hiding places in this house, and the visual language communicates that before the script does.</p>
-      <p>Peele's script, which won the Academy Award, is written with the precision of a trap — which is appropriate, because it is one. Every detail planted in the first half pays off in the second. The deer on the road, the bingo card, the photos in Rose's closet. On a rewatch, the film becomes a completely different experience: instead of dread, what you feel is the cold clarity of a mechanism you can finally see in full.</p>
+      <span class="row-genre">Thriller</span>
+      <span class="row-arrow">→</span>
+    </div>
 
-      <!-- VERDICT -->
-      <div class="verdict-box">
-        <p class="verdict-label">[ Verdict ]</p>
-        <p class="verdict-text"><em>Get Out</em> is the rarest kind of genre film: one with something real to say that uses the genre's full toolkit to say it. It is funny, frightening, and furious in exactly the right proportions. The horror works because the social observation works. Peele built the mechanism to fit the argument, and it doesn't miss a single beat.</p>
+    <div class="film-row" onclick="showArticle('shawshank')">
+      <span class="row-num">H</span>
+      <div class="row-info">
+        <div class="row-title">The Shawshank Redemption</div>
+        <div class="row-meta">Frank Darabont · 1994</div>
       </div>
+      <span class="row-genre">Drama</span>
+      <span class="row-arrow">→</span>
+    </div>
 
+    <div class="film-row" onclick="showArticle('shining')">
+      <span class="row-num">I</span>
+      <div class="row-info">
+        <div class="row-title">The Shining</div>
+        <div class="row-meta">Stanley Kubrick · 1980</div>
+      </div>
+      <span class="row-genre">Horror</span>
+      <span class="row-arrow">→</span>
+    </div>
+
+    <div class="film-row" onclick="showArticle('spiritedaway')">
+      <span class="row-num">J</span>
+      <div class="row-info">
+        <div class="row-title">Spirited Away</div>
+        <div class="row-meta">Hayao Miyazaki · 2001</div>
+      </div>
+      <span class="row-genre">Animation</span>
+      <span class="row-arrow">→</span>
+    </div>
+
+    <div class="film-row" onclick="showArticle('whiplash')">
+      <span class="row-num">K</span>
+      <div class="row-info">
+        <div class="row-title">Whiplash</div>
+        <div class="row-meta">Damien Chazelle · 2014</div>
+      </div>
+      <span class="row-genre">Drama</span>
+      <span class="row-arrow">→</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     ARTICLE: WHIPLASH
+══════════════════════════════════════════════════ -->
+<div id="article-whiplash" class="article-page">
+  <span class="back-link" onclick="goBack()">← Back</span>
+  <div class="film-hero">
+    <p class="eyebrow">[ Drama · 2014 · 107 min ]</p>
+    <h1 class="film-title">Whiplash</h1>
+    <p class="film-subtitle">The cost of greatness, and who gets to decide what that means.</p>
+    <div class="film-meta-row">
+      <span>Dir. Damien Chazelle</span><span>·</span>
+      <span>DoP: Sharone Meir</span><span>·</span>
+      <span>Ed. Tom Cross</span>
+    </div>
+    <div class="spoiler-banner"><span>⚠</span><span>Full spoilers — this analysis discusses the film's ending in detail.</span></div>
+    <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-label">Essential</span></div>
+  </div>
+  <div class="article-body">
+    <div class="section-marker"><span class="frame-count">[ 001 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">A War Disguised as a Mentorship</h2>
+    <p>Damien Chazelle's <em>Whiplash</em> opens with a drum kit in darkness and a 19-year-old named Andrew Neiman (Miles Teller) practising alone. When he is discovered by Terence Fletcher (J.K. Simmons) — the school's feared conductor — you sense immediately that something predatory has just made contact with something ambitious enough to be prey.</p>
+    <p>The film's central dynamic is framed as mentorship, but Chazelle is at pains to make sure we understand it is nothing of the sort. Fletcher does not want to develop Andrew. He wants to find out what Andrew is made of — and if Andrew breaks in the process, that is not Fletcher's problem, because broken students aren't great musicians and never would have been.</p>
+    <div class="pull-quote">
+      <p>"There are no two words in the English language more harmful than 'good job.'"</p>
+      <cite>— Terence Fletcher</cite>
+    </div>
+
+    <div class="section-marker"><span class="frame-count">[ 002 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Craft: The Camera as Drumstick</h2>
+    <p>Chazelle and cinematographer Sharone Meir make the camera itself rhythmic. Close-ups on hands, sticks, drum skins, and Andrew's bloodied fingers accumulate into a percussive edit language that mirrors the music on screen. Tom Cross's editing earned him an Oscar — the film's finale, a relentless jazz performance unspooling for nearly ten minutes, is cut with the precision of the very music it depicts. The editing <em>is</em> the drumming.</p>
+    <p>The colour palette is bruised and sweaty — amber rehearsal rooms, fluorescent hallways. The Shaffer Conservatory is presented not as an institution of culture but as an industrial space where people are processed. Chazelle is deliberately defusing the myth of the tortured artist before we can settle into it.</p>
+
+    <div class="section-marker"><span class="frame-count">[ 003 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">The Film's Moral Ambiguity</h2>
+    <p><em>Whiplash</em> has been accused of endorsing Fletcher's methodology. This reading is understandable but shallow. The film shows us the full cost of Andrew's obsession: he destroys a genuine relationship, estranges his father, and walks away from a car crash — bleeding — because he would rather perform concussed than miss his chance. This is not portrayed as heroic. It is compulsion, barely distinguishable from self-destruction.</p>
+    <p>The ending — Andrew finally playing the Charlie Parker set from memory, pushing the band into a transcendent performance Fletcher did not plan — can be read as triumph or as the film's darkest joke. Andrew has won, but only by becoming the thing Fletcher wanted him to become. Whether that's greatness or a particularly glamorous ruin is a question the film deliberately leaves open.</p>
+    <div class="pull-quote">
+      <p>The final shot cuts to black mid-cymbal crash. No resolution, no breath. Chazelle doesn't let you applaud.</p>
+      <cite>— Frame One</cite>
+    </div>
+
+    <div class="section-marker"><span class="frame-count">[ 004 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Simmons and Teller: A Two-Hander at Full Volume</h2>
+    <p>J.K. Simmons' performance is one of the great screen villain turns, with the asterisk that Fletcher never behaves as if he is a villain. He is utterly sincere. When he tells the story of his late student — designed to show Andrew he is not the monster history has made him — Simmons plays it with such quiet grief that you almost believe him. Then you remember the student died by suicide.</p>
+    <p>Teller is a revelation in the physical demands alone — he actually learned to play at performance level — but more importantly he calibrates Andrew's emptiness with care. Andrew is not likable, and the film knows that. Teller makes that legible without asking for your sympathy.</p>
+    <div class="verdict-box">
+      <p class="verdict-label">[ Verdict ]</p>
+      <p class="verdict-text"><em>Whiplash</em> is a film about the price of obsession that refuses to tell you whether the price was worth it. That refusal is exactly what makes it great — and deeply uncomfortable to revisit.</p>
     </div>
   </div>
+</div>
 
-  <!-- ── FOOTER ── -->
-  <footer class="site-footer">
-    <p>Frame One — Film Analysis — All opinions are the author's own</p>
-  </footer>
-
-  <!-- ══════════════════════════════════════════════
-       ARTICLE: FIGHT CLUB
-  ══════════════════════════════════════════════════ -->
-  <div id="article-fightclub" class="article-page">
-    <a class="back-link" href="#" onclick="showIndex()">← All Films</a>
-
-    <div class="film-hero">
-      <p class="eyebrow">[ 003 ] — Thriller · 1999 · 139 min</p>
-      <h1 class="film-title">Fight Club</h1>
-      <p class="film-subtitle">A film that its own audience has spent 25 years misreading.</p>
-      <div class="film-meta-row">
-        <span>Dir. David Fincher</span>
-        <span>·</span>
-        <span>DoP: Jeff Cronenweth</span>
-        <span>·</span>
-        <span>Ed. James Haygood</span>
-      </div>
-      <div class="spoiler-banner">
-        <span class="spoiler-icon">⚠</span>
-        <span>Full spoilers ahead — this analysis discusses the film's central twist and ending in detail.</span>
-      </div>
-      <div class="rating-row">
-        <span class="stars">★★★★★</span>
-        <span class="rating-label">Essential</span>
-      </div>
+<!-- ══════════════════════════════════════════════
+     ARTICLE: GET OUT
+══════════════════════════════════════════════════ -->
+<div id="article-getout" class="article-page">
+  <span class="back-link" onclick="goBack()">← Back</span>
+  <div class="film-hero">
+    <p class="eyebrow">[ Horror · 2017 · 104 min ]</p>
+    <h1 class="film-title">Get Out</h1>
+    <p class="film-subtitle">The politest horror film ever made — and the most frightening.</p>
+    <div class="film-meta-row">
+      <span>Dir. Jordan Peele</span><span>·</span>
+      <span>DoP: Toby Oliver</span><span>·</span>
+      <span>Ed. Gregory Plotkin</span>
+    </div>
+    <div class="spoiler-banner"><span>⚠</span><span>Full spoilers — discusses the Coagula procedure and the film's ending.</span></div>
+    <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-label">Essential</span></div>
+  </div>
+  <div class="article-body">
+    <div class="section-marker"><span class="frame-count">[ 001 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Politeness as Horror</h2>
+    <p>Jordan Peele's debut opens with a Black man walking alone at night in a white suburb, and before anything has happened the scene has established its thesis. The horror of <em>Get Out</em> is not monstrous or supernatural. It is entirely, recognisably human — the horror of a Black man having to be careful in a country that has decided it is over being racist, while simultaneously not being over it at all.</p>
+    <p>Chris Washington (Daniel Kaluuya) travels upstate to meet his white girlfriend Rose's (Allison Williams) family. The Armitage estate is beautiful, tasteful, and staffed by Black workers who smile too wide and blink too slow. Nothing in the first half is overtly threatening. The horror is entirely social — the horror of a room that is overly nice to you in a way that makes you feel like a specimen.</p>
+    <div class="pull-quote">
+      <p>"No matter how bad things get, when you sink into the Sunken Place, you feel like you're floating. You see what's happening, but you can't stop it."</p>
+      <cite>— Missy Armitage</cite>
     </div>
 
-    <div class="article-body">
+    <div class="section-marker"><span class="frame-count">[ 002 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">The Sunken Place: The Film's Central Metaphor</h2>
+    <p>When Missy Armitage hypnotises Chris into the Sunken Place — a state of paralytic consciousness where he can see but cannot act — Peele gives us the film's central image. Chris falls backward through darkness, staring up at a tiny screen showing his own body moving without his control. It is one of the most economical visual metaphors in recent American cinema: the Black body, made spectacle of itself, reduced to a passenger in its own experience.</p>
+    <p>The Sunken Place is a direct visual argument about a specific form of racial oppression: the consciousness present and aware and screaming, but systemically unable to act. What makes the metaphor precise is that it comes with a trigger: a cup of tea, a stirring spoon, a performance of calm. The Armitages don't use violence. They use social ritual.</p>
 
-      <div class="section-marker">
-        <span class="frame-count">[ 001 ]</span>
-        <div class="frame-rule"></div>
-      </div>
-      <h2 class="section-heading">The Setup: Alienation in a IKEA Catalogue</h2>
-      <p>David Fincher's <em>Fight Club</em> opens inside a brain — literally, the camera pulling back through synapses and skull to find Edward Norton's unnamed Narrator holding a gun in his own mouth. It is a movie that tells you exactly what it is from the first frame and then bets, correctly, that you will spend the next two hours misunderstanding it anyway.</p>
-      <p>The Narrator is an insomniac corporate drone whose life is furnished entirely by mail-order catalogues. He has no identity outside his consumption, no relationships outside support group tourism where he pretends to have illnesses he doesn't have in order to feel something. When he meets Tyler Durden (Brad Pitt) on a plane — charismatic, impulsive, philosophically unhinged — the film presents their dynamic as liberation. The Narrator, and with him a significant portion of the audience, takes Tyler at face value. This is the trap Fincher and screenwriter Jim Uhls lay with extraordinary care.</p>
+    <div class="section-marker"><span class="frame-count">[ 003 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">The Coagula Procedure: Fetishisation as Literal Horror</h2>
+    <p>The third act reveals the full mechanism: the Armitage family transplants a white person's brain into a Black host body. The Black consciousness is not destroyed — it is pushed into the Sunken Place, alive, aware, watching. The white recipient gets to inhabit a Black body they have selected, often for physical attributes: athletic ability, perceived vitality, cultural cachet.</p>
+    <p>What the Coagula procedure literalises is fetishisation — the reduction of a person to their body, stripped of interiority, desired for physical characteristics rather than personhood. The bidding guests at the party are not villains in the conventional sense. They are enthusiasts. Peele does not let this be subtle.</p>
+    <div class="pull-quote">
+      <p>The Armitages are not bigots in the traditional sense. They love Black culture — they just want to own it. That distinction is the film's entire argument.</p>
+      <cite>— Frame One</cite>
+    </div>
 
-      <div class="pull-quote">
-        <p>"You are not your job. You're not how much money you have in the bank. You're not the car you drive. You're not the contents of your wallet."</p>
-        <cite>— Tyler Durden</cite>
-      </div>
-
-      <div class="section-marker">
-        <span class="frame-count">[ 002 ]</span>
-        <div class="frame-rule"></div>
-      </div>
-      <h2 class="section-heading">Fincher's Visual Grammar: The World as Sickness</h2>
-      <p>Jeff Cronenweth's cinematography desaturates the film's palette to something between jaundice and bruise — a world drained of vitality, lit with the sickly green-yellow of fluorescent offices and the amber of cheap bars. The Narrator's apartment, before it explodes, is rendered in IKEA's own catalogue photography aesthetic: too clean, too curated, the look of a life assembled from someone else's idea of what a life should contain.</p>
-      <p>Fincher uses subliminal cuts throughout — single frames of Tyler spliced into scenes before his formal introduction, the kind of thing you won't consciously catch the first time but which primes you to feel like something is structurally wrong before you can articulate why. The editing (James Haygood) runs at a pace that approximates the Narrator's dissociation: too fast in some places, vertiginously slow in others, the rhythm of a mind that has lost track of itself.</p>
-      <p>The film also plants its twist in plain sight. Watch the Narrator's apartment scenes carefully: Tyler is always present in reflections, in doorways, in peripheral frames. The movie is not hiding the reveal — it is openly encoding it for viewers who are looking at the right things.</p>
-
-      <div class="section-marker">
-        <span class="frame-count">[ 003 ]</span>
-        <div class="frame-rule"></div>
-      </div>
-      <h2 class="section-heading">The Misreading Problem: What Tyler Durden Actually Is</h2>
-      <p>The film's central problem — and its enduring cultural legacy — is that a substantial portion of its audience has always read Tyler Durden as a role model rather than a symptom. Tyler's monologues are written to be seductive. Pitt delivers them with the easy charisma of someone who has never been wrong about anything. The fight club itself feels, in the early stages, like genuine community and genuine aliveness.</p>
-      <p>But the film is meticulous about showing us what Tyler's logic actually produces. Fight club becomes Project Mayhem, which is not a liberation movement but a fascist cult: members stripped of names, individuality subordinated entirely to the group's mission, violence deployed not against systems but against people who happen to be nearby. The Narrator's horror as he watches his projection take control is the film's emotional centre — not the fights, not the speeches. The fights are the symptom. The horror is the recognition.</p>
-      <p>Tyler Durden is not a person. He is the Narrator's idealised self-image: the man he imagines he would be if he shed every social constraint. That this idealised self turns out to be a terrorist who wants to detonate credit card headquarters is the film's verdict on the fantasy. Fincher is not endorsing Tyler. He is diagnosing him.</p>
-
-      <div class="pull-quote">
-        <p>The film's actual thesis is the opposite of what its most devoted fans believe. It is a critique of the exact masculine fantasy Tyler embodies — not a blueprint for it.</p>
-        <cite>— Frame One</cite>
-      </div>
-
-      <div class="section-marker">
-        <span class="frame-count">[ 004 ]</span>
-        <div class="frame-rule"></div>
-      </div>
-      <h2 class="section-heading">Norton, Pitt, and the Mechanics of a Shared Performance</h2>
-      <p>The performances are calibrated to a shared logic that only becomes fully legible on rewatch. Norton plays the Narrator as someone whose face is always slightly behind his body — reactions a beat late, exhaustion that reads as dissociation. He is a man who has exited himself, which is why Tyler can move in. Pitt, meanwhile, plays Tyler as pure id: every gesture loose, every line reading assured, a performance of absolute presence from a character who doesn't technically exist.</p>
-      <p>The casting matters because Pitt's natural charisma does enormous amounts of work to make Tyler credible as a projection. He is exactly what a certain kind of hollow, exhausted man would imagine himself being. Norton and Pitt, working from the same psychological architecture, make the split feel lived-in rather than mechanical — which is why the reveal lands so hard even on viewers who have been primed to expect it.</p>
-
-      <div class="verdict-box">
-        <p class="verdict-label">[ Verdict ]</p>
-        <p class="verdict-text"><em>Fight Club</em> is one of the most technically accomplished American films of its decade — and one of the most consistently misunderstood. Fincher made a precise, cold, darkly funny film about the bankruptcy of a particular masculine fantasy, and the culture turned it into a recruitment poster. That gap between intention and reception is itself part of the film's argument.</p>
-      </div>
-
+    <div class="section-marker"><span class="frame-count">[ 004 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Kaluuya and the Craft of Building Tension</h2>
+    <p>Kaluuya must be readable without tipping into parody — he has to notice the wrongness of the estate without fully trusting his own perception, because the film is also about the way people are trained to second-guess their instincts when making an accusation carries social cost. He plays all of this in the eyes and the shoulders, registering discomfort and then suppressing it, over and over.</p>
+    <p>Peele's script, which won the Academy Award, is written with the precision of a trap. Every detail planted in the first half pays off in the second. The deer on the road, the bingo card, the photos in Rose's closet. On a rewatch, the film becomes a completely different experience: instead of dread, what you feel is the cold clarity of a mechanism you can finally see in full.</p>
+    <div class="verdict-box">
+      <p class="verdict-label">[ Verdict ]</p>
+      <p class="verdict-text"><em>Get Out</em> is the rarest kind of genre film: one with something real to say that uses the genre's full toolkit to say it. Funny, frightening, and furious in exactly the right proportions. The horror works because the social observation works.</p>
     </div>
   </div>
+</div>
 
-  <!-- ══════════════════════════════════════════════
-       ARTICLE: THE GODFATHER
-  ══════════════════════════════════════════════════ -->
-  <div id="article-godfather" class="article-page">
-    <a class="back-link" href="#" onclick="showIndex()">← All Films</a>
-
-    <div class="film-hero">
-      <p class="eyebrow">[ 004 ] — Crime · 1972 · 175 min</p>
-      <h1 class="film-title">The Godfather</h1>
-      <p class="film-subtitle">A tragedy about a man who chooses power over everything — and wins.</p>
-      <div class="film-meta-row">
-        <span>Dir. Francis Ford Coppola</span>
-        <span>·</span>
-        <span>DoP: Gordon Willis</span>
-        <span>·</span>
-        <span>Ed. William Reynolds, Peter Zinner</span>
-      </div>
-      <div class="spoiler-banner">
-        <span class="spoiler-icon">⚠</span>
-        <span>Full spoilers ahead — this analysis discusses Michael's transformation and the film's ending in detail.</span>
-      </div>
-      <div class="rating-row">
-        <span class="stars">★★★★★</span>
-        <span class="rating-label">Essential</span>
-      </div>
+<!-- ══════════════════════════════════════════════
+     ARTICLE: FIGHT CLUB
+══════════════════════════════════════════════════ -->
+<div id="article-fightclub" class="article-page">
+  <span class="back-link" onclick="goBack()">← Back</span>
+  <div class="film-hero">
+    <p class="eyebrow">[ Thriller · 1999 · 139 min ]</p>
+    <h1 class="film-title">Fight Club</h1>
+    <p class="film-subtitle">A film that its own audience has spent 25 years misreading.</p>
+    <div class="film-meta-row">
+      <span>Dir. David Fincher</span><span>·</span>
+      <span>DoP: Jeff Cronenweth</span><span>·</span>
+      <span>Ed. James Haygood</span>
+    </div>
+    <div class="spoiler-banner"><span>⚠</span><span>Full spoilers — discusses the central twist and ending in detail.</span></div>
+    <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-label">Essential</span></div>
+  </div>
+  <div class="article-body">
+    <div class="section-marker"><span class="frame-count">[ 001 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Alienation in an IKEA Catalogue</h2>
+    <p>David Fincher's <em>Fight Club</em> opens inside a brain — the camera pulling back through synapses and skull to find Edward Norton's unnamed Narrator holding a gun in his own mouth. It is a movie that tells you exactly what it is from the first frame and then bets, correctly, that you will spend the next two hours misunderstanding it anyway.</p>
+    <p>The Narrator is an insomniac corporate drone whose life is furnished entirely by mail-order catalogues. He has no identity outside his consumption. When he meets Tyler Durden (Brad Pitt) — charismatic, impulsive, philosophically unhinged — the film presents their dynamic as liberation. The Narrator, and with him a significant portion of the audience, takes Tyler at face value. This is the trap Fincher lays with extraordinary care.</p>
+    <div class="pull-quote">
+      <p>"You are not your job. You're not how much money you have in the bank. You're not the car you drive. You're not the contents of your wallet."</p>
+      <cite>— Tyler Durden</cite>
     </div>
 
-    <div class="article-body">
+    <div class="section-marker"><span class="frame-count">[ 002 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Fincher's Visual Grammar: The World as Sickness</h2>
+    <p>Jeff Cronenweth's cinematography desaturates the palette to something between jaundice and bruise — a world drained of vitality. The Narrator's apartment, before it explodes, is rendered in IKEA's own catalogue aesthetic: too clean, too curated, the look of a life assembled from someone else's idea of what a life should contain.</p>
+    <p>Fincher uses subliminal cuts throughout — single frames of Tyler spliced into scenes before his formal introduction. The editing runs at a pace that approximates the Narrator's dissociation: too fast in some places, vertiginously slow in others, the rhythm of a mind that has lost track of itself. The film also plants its twist in plain sight. Watch the apartment scenes carefully: Tyler is always present in reflections, in doorways, in peripheral frames.</p>
 
-      <div class="section-marker">
-        <span class="frame-count">[ 001 ]</span>
-        <div class="frame-rule"></div>
-      </div>
-      <h2 class="section-heading">The Opening: Power in Darkness</h2>
-      <p>Francis Ford Coppola's <em>The Godfather</em> opens in complete darkness. A man's voice — supplicant, nervous — fills the void before we see anything. "I believe in America." Then, slowly, a face materialises out of shadow: Vito Corleone (Marlon Brando), half-lit, unhurried, a cat in his lap. It is one of the great opening minutes in cinema history, and it establishes everything the film cares about in under three minutes: the relationship between power and theatre, between darkness and respectability, between what is asked for and what is actually given.</p>
-      <p>Coppola and cinematographer Gordon Willis — nicknamed "The Prince of Darkness" for his willingness to let faces disappear into shadow — made a deliberate choice to shoot the Corleone interiors as though light were a privilege distributed unevenly among the powerful. Vito Corleone is often half-obscured. His sons are lit more fully, which will matter: the film is about the transition of power from one generation to the next, and the lighting tracks who is ascending and who is receding.</p>
+    <div class="section-marker"><span class="frame-count">[ 003 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">The Misreading Problem: What Tyler Durden Actually Is</h2>
+    <p>The film's central problem is that a substantial portion of its audience has always read Tyler Durden as a role model rather than a symptom. Tyler's monologues are written to be seductive. But the film is meticulous about showing us what Tyler's logic actually produces. Fight club becomes Project Mayhem — a fascist cult with members stripped of names, individuality subordinated to the group's mission, violence deployed not against systems but against whoever is nearby.</p>
+    <p>Tyler Durden is not a person. He is the Narrator's idealised self-image: the man he imagines he would be if he shed every social constraint. That this idealised self turns out to be a terrorist is the film's verdict on the fantasy. Fincher is not endorsing Tyler. He is diagnosing him.</p>
+    <div class="pull-quote">
+      <p>The film's actual thesis is the opposite of what its most devoted fans believe. It is a critique of the exact masculine fantasy Tyler embodies — not a blueprint for it.</p>
+      <cite>— Frame One</cite>
+    </div>
 
-      <div class="pull-quote">
-        <p>"Leave the gun. Take the cannoli."</p>
-        <cite>— Peter Clemenza</cite>
-      </div>
-
-      <div class="section-marker">
-        <span class="frame-count">[ 002 ]</span>
-        <div class="frame-rule"></div>
-      </div>
-      <h2 class="section-heading">Gordon Willis and the Grammar of Shadow</h2>
-      <p>Willis's cinematography is inseparable from the film's moral argument. The Corleone compound — festive, sunlit, full of music and dancing at the wedding that opens the film — is warm and golden, almost Sicilian-pastoral. The offices where business is conducted are near-black. The contrast is not decorative; it is structural. The Corleones have built a version of the American dream in which the legitimate surface (the family, the weddings, the loyalty) is underwritten by violence conducted in rooms where you can barely see.</p>
-      <p>This visual logic reaches its apex in Michael's arc. When Al Pacino's Michael Corleone — the youngest son, the war hero, the one who was supposed to escape — first appears at the wedding, he is lit openly, clearly, standing slightly apart from the family's gravitational field. By the film's final scenes, when the door closes on Kay and Michael accepts the title of Don, the light that falls on him has become exactly the same as the light that fell on his father at the beginning. He has been absorbed.</p>
-
-      <div class="section-marker">
-        <span class="frame-count">[ 003 ]</span>
-        <div class="frame-rule"></div>
-      </div>
-      <h2 class="section-heading">Michael Corleone: The Tragedy of the Chosen Exception</h2>
-      <p>The film's tragedy — and it is unambiguously a tragedy, whatever the glamour of its production — is Michael's. He begins the film as the family member who has legitimised himself: decorated military officer, Ivy League education, a girlfriend from outside the world he grew up in. When Vito is shot and the family faces a crisis of leadership, Michael volunteers to help, once, in a contained way. He will kill the corrupt police captain and the rival don at a restaurant meeting. Just this once. Just because it needs to be done.</p>
-      <p>Coppola stages the restaurant scene with the slow dread of inevitability. Michael sits across from two men who want his father dead, and the camera holds on Pacino's face — something passing through it, some final calculation — before he retrieves the gun from the bathroom and returns to the table. The shot that follows is not triumphant. It is the sound of a door closing. From this point, Michael does not escape the family business. He becomes it.</p>
-      <p>What makes the film so much more than a crime epic is that Coppola never lets the Corleone mythology fully seduce you the way it seduces Michael. The violence is never stylised into cool. The consequences accumulate: Sonny's death, Connie's marriage, Carlo's murder on Michael's order, Kay's final realisation about who she has married. The film ends on her face as the door closes — shut out from whatever Michael has become — and it is one of the most quietly devastating final shots in American cinema.</p>
-
-      <div class="pull-quote">
-        <p>The door closing on Kay is the film's real ending — not Michael's ascension, but Kay's exclusion. The Godfather is her tragedy as much as Michael's.</p>
-        <cite>— Frame One</cite>
-      </div>
-
-      <div class="section-marker">
-        <span class="frame-count">[ 004 ]</span>
-        <div class="frame-rule"></div>
-      </div>
-      <h2 class="section-heading">Brando, Pacino, and the Passing of the Flame</h2>
-      <p>Marlon Brando's Vito is so fully inhabited that it risks overshadowing everything around it — and would, if Pacino's Michael weren't an equally complete creation moving in the opposite direction. Brando plays Vito as a man of genuine warmth and absolute authority, someone who loves his family without question and murders without apparent contradiction. The character's internal logic is airtight: within his own code, Vito is consistent and even moral. The horror is that the code itself is the problem.</p>
-      <p>Pacino begins the film almost passive — watchful, underplaying while Brando, James Caan, and Robert Duvall fill the room. This is a performance choice that pays off over the film's three-hour runtime: as Michael absorbs more of the family's power, Pacino gradually expands to fill the space left by others. By the end, he is the room. The performance is a slow, irresistible inflation — Michael becoming, one scene at a time, the thing he swore he would never be.</p>
-
-      <div class="verdict-box">
-        <p class="verdict-label">[ Verdict ]</p>
-        <p class="verdict-text"><em>The Godfather</em> has been called the greatest American film so often that it has become difficult to see clearly. Look past the mythology: it is a precisely constructed tragedy about the corruption of a soul, filmed with the patience of someone who believes every choice has visual weight. Coppola did not make a film that glamourises organised crime. He made a film that shows you exactly how glamour works — and what it costs.</p>
-      </div>
-
+    <div class="section-marker"><span class="frame-count">[ 004 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Norton, Pitt, and a Shared Performance</h2>
+    <p>Norton plays the Narrator as someone whose face is always slightly behind his body — reactions a beat late, exhaustion that reads as dissociation. He is a man who has exited himself, which is why Tyler can move in. Pitt, meanwhile, plays Tyler as pure id: every gesture loose, every line reading assured, a performance of absolute presence from a character who doesn't technically exist.</p>
+    <p>Pitt's natural charisma does enormous work to make Tyler credible as a projection — he is exactly what a certain kind of hollow, exhausted man would imagine himself being. Working from the same psychological architecture, both performances make the split feel lived-in rather than mechanical.</p>
+    <div class="verdict-box">
+      <p class="verdict-label">[ Verdict ]</p>
+      <p class="verdict-text"><em>Fight Club</em> is one of the most technically accomplished American films of its decade — and one of the most consistently misunderstood. Fincher made a precise, cold, darkly funny critique of masculine fantasy, and the culture turned it into a recruitment poster. That gap between intention and reception is itself part of the film's argument.</p>
     </div>
   </div>
+</div>
 
-  <!-- ══════════════════════════════════════════════
-       ARTICLE: PARASITE
-  ══════════════════════════════════════════════════ -->
-  <div id="article-parasite" class="article-page">
-    <a class="back-link" href="#" onclick="showIndex()">← All Films</a>
-
-    <div class="film-hero">
-      <p class="eyebrow">[ 005 ] — Thriller · 2019 · 132 min</p>
-      <h1 class="film-title">Parasite</h1>
-      <p class="film-subtitle">A film about class that refuses to let you stand outside it.</p>
-      <div class="film-meta-row">
-        <span>Dir. Bong Joon-ho</span>
-        <span>·</span>
-        <span>DoP: Hong Kyung-pyo</span>
-        <span>·</span>
-        <span>Ed. Yang Jin-mo</span>
-      </div>
-      <div class="spoiler-banner">
-        <span class="spoiler-icon">⚠</span>
-        <span>Full spoilers ahead — this analysis discusses the film's third-act revelations and ending in full.</span>
-      </div>
-      <div class="rating-row">
-        <span class="stars">★★★★★</span>
-        <span class="rating-label">Essential</span>
-      </div>
+<!-- ══════════════════════════════════════════════
+     ARTICLE: THE GODFATHER
+══════════════════════════════════════════════════ -->
+<div id="article-godfather" class="article-page">
+  <span class="back-link" onclick="goBack()">← Back</span>
+  <div class="film-hero">
+    <p class="eyebrow">[ Crime · 1972 · 175 min ]</p>
+    <h1 class="film-title">The Godfather</h1>
+    <p class="film-subtitle">A tragedy about a man who chooses power over everything — and wins.</p>
+    <div class="film-meta-row">
+      <span>Dir. Francis Ford Coppola</span><span>·</span>
+      <span>DoP: Gordon Willis</span><span>·</span>
+      <span>Ed. William Reynolds, Peter Zinner</span>
+    </div>
+    <div class="spoiler-banner"><span>⚠</span><span>Full spoilers — discusses Michael's transformation and the film's ending.</span></div>
+    <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-label">Essential</span></div>
+  </div>
+  <div class="article-body">
+    <div class="section-marker"><span class="frame-count">[ 001 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Power in Darkness</h2>
+    <p>Coppola's <em>The Godfather</em> opens in complete darkness. A man's voice — supplicant, nervous — fills the void before we see anything. "I believe in America." Then, slowly, a face materialises out of shadow: Vito Corleone (Marlon Brando), half-lit, unhurried, a cat in his lap. It establishes everything the film cares about in under three minutes: the relationship between power and theatre, between darkness and respectability, between what is asked for and what is actually given.</p>
+    <p>Cinematographer Gordon Willis — nicknamed "The Prince of Darkness" — made a deliberate choice to shoot the Corleone interiors as though light were a privilege distributed unevenly among the powerful. Vito is often half-obscured. His sons are lit more fully, which will matter: the film is about the transition of power from one generation to the next, and the lighting tracks who is ascending and who is receding.</p>
+    <div class="pull-quote">
+      <p>"Leave the gun. Take the cannoli."</p>
+      <cite>— Peter Clemenza</cite>
     </div>
 
-    <div class="article-body">
+    <div class="section-marker"><span class="frame-count">[ 002 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Gordon Willis and the Grammar of Shadow</h2>
+    <p>Willis's cinematography is inseparable from the film's moral argument. The Corleone compound — festive, sunlit, full of music and dancing — is warm and golden. The offices where business is conducted are near-black. The contrast is structural: the Corleones have built a version of the American dream in which the legitimate surface is underwritten by violence conducted in rooms where you can barely see.</p>
+    <p>When Al Pacino's Michael first appears at the wedding, he is lit openly, standing slightly apart from the family. By the film's final scenes, the light that falls on him has become exactly the same as the light that fell on his father at the beginning. He has been absorbed.</p>
 
-      <div class="section-marker">
-        <span class="frame-count">[ 001 ]</span>
-        <div class="frame-rule"></div>
-      </div>
-      <h2 class="section-heading">The Architecture of Class: Vertical Space as Moral Geography</h2>
-      <p>Bong Joon-ho's <em>Parasite</em> begins in a semi-basement: a cramped apartment below street level, windows at shoe-height, the Kims folding pizza boxes for cash and stealing wifi from a neighbour. The physical world of the film is organised entirely around elevation. The Parks live at the top of a hill in an architect-designed compound. The Kims live underground. Between them, Seoul moves at street level — neutral, indifferent, crowded.</p>
-      <p>This vertical geography is not incidental. Bong uses physical space as the film's primary language. Every time the Kims ascend — into the Park house, into sunlit rooms, into the upstairs floors — there is a charge of transgression and aspiration. Every descent is a return to consequence. When the flooding scene arrives in the third act and the Kim semi-basement fills with sewage water while wealthy families post Instagram photos of the rain, the spatial logic of the entire film resolves into a single, devastating image: some people are lifted by events that drown others.</p>
+    <div class="section-marker"><span class="frame-count">[ 003 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Michael Corleone: The Tragedy of the Chosen Exception</h2>
+    <p>The film's tragedy is Michael's. He begins as the family member who has legitimised himself: decorated military officer, Ivy League education, a girlfriend from outside the world. When Vito is shot, Michael volunteers to help just once — kill the corrupt police captain and the rival don at a restaurant. Just this once. Just because it needs to be done.</p>
+    <p>Coppola stages the restaurant scene with the slow dread of inevitability. The camera holds on Pacino's face — something passing through it, some final calculation — before he retrieves the gun. The shot that follows is not triumphant. It is the sound of a door closing. The consequences accumulate: Sonny's death, Carlo's murder on Michael's order, Kay's final realisation. The film ends on her face as a door closes — shut out from whatever Michael has become — one of the most quietly devastating final shots in American cinema.</p>
+    <div class="pull-quote">
+      <p>The door closing on Kay is the film's real ending — not Michael's ascension, but Kay's exclusion. The Godfather is her tragedy as much as his.</p>
+      <cite>— Frame One</cite>
+    </div>
 
-      <div class="pull-quote">
-        <p>"You know what kind of plan never fails? No plan. No plan at all. You know why? Because life cannot be planned."</p>
-        <cite>— Ki-taek Kim</cite>
-      </div>
-
-      <div class="section-marker">
-        <span class="frame-count">[ 002 ]</span>
-        <div class="frame-rule"></div>
-      </div>
-      <h2 class="section-heading">Genre as Trap: The Film's Structural Pivot</h2>
-      <p><em>Parasite</em> is frequently described as a genre-blending film, but that description undersells how deliberately Bong uses genre as a mechanism of audience manipulation. The first half is a caper comedy — charming, nimble, rooting you entirely for the Kims as they infiltrate the Park household one by one with forged credentials and light fraud. It is genuinely funny. You are fully invested in their success.</p>
-      <p>Then the housekeeper Moon-gwang arrives at the Park door on a rainy night, and everything changes. The reveal of the bunker beneath the house — and the man living in it, Moon-gwang's husband, who has been hiding from creditors for years — is the film's structural hinge. The Kims are not the only people trying to survive inside the Park estate. Below them, another family has been doing the same thing, with even less. The comedy evaporates. What replaces it is something closer to horror: the recognition that scarcity does not ennoble the poor, it sets them against each other.</p>
-      <p>The birthday party massacre that follows is shocking not because of its violence but because of its logic. Ki-taek does not kill Mr Park for any grand ideological reason. He kills him because Mr Park, in the moment of crisis, recoils from the smell of the man in the bunker — the same smell, Ki-taek understands, that Mr Park has always noticed on him. The murder is not a class uprising. It is one man's response to being made to feel, one final time, like a thing beneath notice.</p>
-
-      <div class="section-marker">
-        <span class="frame-count">[ 003 ]</span>
-        <div class="frame-rule"></div>
-      </div>
-      <h2 class="section-heading">The "Smell" Scene: Class Encoded in the Body</h2>
-      <p>One of the film's most precise moments comes early, when Mr Park (Lee Sun-kyun) mentions to his wife, privately, that Mr Kim — the driver — has a particular smell. He is not cruel about it. He is almost apologetic. It is, he says, the smell of the subway. This detail sits in the film's first half like a splinter — uncomfortable but easy to ignore while things are going well for the Kims.</p>
-      <p>Bong returns to it in the climax with devastating effect. It is the smell — and Mr Park's involuntary recoil from it, his nose wrinkling at the sight of a dying man — that triggers Ki-taek's violence. The moment captures something the film has been building toward all along: that class is not just economic but embodied, carried in the skin and breath of people who cannot wash it off no matter how successfully they infiltrate the floors above them. The Parks are not malicious. They are oblivious. Bong argues that obliviousness, at a certain level of privilege, functions the same way as cruelty.</p>
-
-      <div class="pull-quote">
-        <p>The Parks are not villains. That's precisely the problem. Bong denies you a target and forces you to look at the system instead.</p>
-        <cite>— Frame One</cite>
-      </div>
-
-      <div class="section-marker">
-        <span class="frame-count">[ 004 ]</span>
-        <div class="frame-rule"></div>
-      </div>
-      <h2 class="section-heading">The Ending: A Plan That Cannot Be Executed</h2>
-      <p>The film's final sequence is one of the most structurally elegant endings in recent cinema. Ki-woo, recovering from a skull fracture, writes a letter to his father — who has descended into the bunker to hide — laying out a plan: earn money, buy the Park house, walk up the stairs and find him. It is an optimistic plan. It is also, the film makes quietly clear, a fantasy. The probability of a semi-basement Kim family ever purchasing a property of that scale through legitimate means is essentially zero.</p>
-      <p>Bong cuts between Ki-woo's imagined future — sunny, warm, the reunion on the stairs — and the reality of Ki-woo sitting in the semi-basement, tears on his face. The plan exists only in his mind. His father remains underground. The structure of the world that put them there has not changed at all. The film ends not with despair exactly, but with the clear-eyed acknowledgment that aspiration and mobility are not the same thing — and that the dream of elevation, for people like the Kims, may be the very thing that keeps the system running.</p>
-
-      <div class="verdict-box">
-        <p class="verdict-label">[ Verdict ]</p>
-        <p class="verdict-text"><em>Parasite</em> is a film that makes you laugh, then implicates you for laughing, then makes you watch the consequences, then denies you the catharsis of a clean resolution. Bong Joon-ho built a trap for his audience that mirrors the trap his characters are inside. It is one of the most complete works of popular cinema in the 21st century.</p>
-      </div>
-
+    <div class="section-marker"><span class="frame-count">[ 004 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Brando, Pacino, and the Passing of the Flame</h2>
+    <p>Brando plays Vito as a man of genuine warmth and absolute authority, someone who loves his family without question and murders without apparent contradiction. The character's internal logic is airtight: within his own code, Vito is consistent and even moral. The horror is that the code itself is the problem.</p>
+    <p>Pacino begins almost passive — watchful, underplaying while Brando, James Caan, and Robert Duvall fill the room. As Michael absorbs more power, Pacino gradually expands to fill the space left by others. By the end, he is the room. The performance is a slow, irresistible inflation — Michael becoming, one scene at a time, the thing he swore he would never be.</p>
+    <div class="verdict-box">
+      <p class="verdict-label">[ Verdict ]</p>
+      <p class="verdict-text"><em>The Godfather</em> is a precisely constructed tragedy about the corruption of a soul, filmed with the patience of someone who believes every choice has visual weight. Coppola did not glamourise organised crime. He made a film that shows you exactly how glamour works — and what it costs.</p>
     </div>
   </div>
+</div>
 
-  <!-- ── FOOTER ── -->
-  <footer class="site-footer">
-    <p>Frame One — Film Analysis — All opinions are the author's own</p>
-  </footer>
+<!-- ══════════════════════════════════════════════
+     ARTICLE: PARASITE
+══════════════════════════════════════════════════ -->
+<div id="article-parasite" class="article-page">
+  <span class="back-link" onclick="goBack()">← Back</span>
+  <div class="film-hero">
+    <p class="eyebrow">[ Thriller · 2019 · 132 min ]</p>
+    <h1 class="film-title">Parasite</h1>
+    <p class="film-subtitle">A film about class that refuses to let you stand outside it.</p>
+    <div class="film-meta-row">
+      <span>Dir. Bong Joon-ho</span><span>·</span>
+      <span>DoP: Hong Kyung-pyo</span><span>·</span>
+      <span>Ed. Yang Jin-mo</span>
+    </div>
+    <div class="spoiler-banner"><span>⚠</span><span>Full spoilers — discusses the third-act revelations and ending.</span></div>
+    <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-label">Essential</span></div>
+  </div>
+  <div class="article-body">
+    <div class="section-marker"><span class="frame-count">[ 001 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Vertical Space as Moral Geography</h2>
+    <p>Bong Joon-ho's <em>Parasite</em> begins in a semi-basement: cramped apartment below street level, windows at shoe-height, the Kims folding pizza boxes for cash. The physical world is organised entirely around elevation. The Parks live at the top of a hill in an architect-designed compound. The Kims live underground. Between them, Seoul moves at street level — neutral, indifferent, crowded.</p>
+    <p>Bong uses physical space as the film's primary language. Every time the Kims ascend — into the Park house, into sunlit rooms — there is a charge of transgression and aspiration. Every descent is a return to consequence. When the flooding scene arrives and the Kim semi-basement fills with sewage while wealthy families Instagram the rain, the spatial logic of the entire film resolves into one devastating image: some people are lifted by events that drown others.</p>
+    <div class="pull-quote">
+      <p>"You know what kind of plan never fails? No plan. No plan at all. You know why? Because life cannot be planned."</p>
+      <cite>— Ki-taek Kim</cite>
+    </div>
 
-  <script>
-    const ALL_ARTICLES = ['whiplash','getout','fightclub','godfather','parasite'];
+    <div class="section-marker"><span class="frame-count">[ 002 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Genre as Trap: The Film's Structural Pivot</h2>
+    <p>The first half is a caper comedy — charming, nimble, rooting you entirely for the Kims as they infiltrate the Park household one by one with forged credentials and light fraud. It is genuinely funny. Then the housekeeper Moon-gwang arrives on a rainy night, and everything changes. The reveal of the bunker — and the man living in it — is the structural hinge. The Kims are not the only people trying to survive inside the Park estate. Below them, another family has been doing the same thing, with even less.</p>
+    <p>The birthday party massacre is shocking not because of its violence but because of its logic. Ki-taek does not kill Mr Park for any grand ideological reason. He kills him because Mr Park recoils from the smell of the man in the bunker — the same smell, Ki-taek understands, that Mr Park has always noticed on him. The murder is one man's response to being made to feel, one final time, like a thing beneath notice.</p>
 
-    function showIndex() {
-      document.getElementById('index-page').style.display = 'block';
-      ALL_ARTICLES.forEach(id => document.getElementById('article-' + id).style.display = 'none');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return false;
-    }
+    <div class="section-marker"><span class="frame-count">[ 003 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">The "Smell" Scene: Class Encoded in the Body</h2>
+    <p>Early in the film, Mr Park mentions privately that the driver — Mr Kim — has a particular smell. He is not cruel about it; almost apologetic. It is, he says, the smell of the subway. This detail sits in the first half like a splinter — uncomfortable but easy to ignore while things are going well for the Kims.</p>
+    <p>Bong returns to it in the climax with devastating effect. The moment captures something the film has been building toward: that class is not just economic but embodied, carried in people who cannot wash it off no matter how successfully they infiltrate the floors above them. The Parks are not malicious. They are oblivious. Bong argues that obliviousness, at a certain level of privilege, functions the same way as cruelty.</p>
+    <div class="pull-quote">
+      <p>The Parks are not villains. That's precisely the problem. Bong denies you a target and forces you to look at the system instead.</p>
+      <cite>— Frame One</cite>
+    </div>
 
-    function showArticle(id) {
-      document.getElementById('index-page').style.display = 'none';
-      ALL_ARTICLES.forEach(a => document.getElementById('article-' + a).style.display = 'none');
-      document.getElementById('article-' + id).style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return false;
-    }
-  </script>
+    <div class="section-marker"><span class="frame-count">[ 004 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">The Ending: A Plan That Cannot Be Executed</h2>
+    <p>Ki-woo, recovering from a skull fracture, writes a letter to his father — now hiding in the bunker — laying out a plan: earn money, buy the Park house, walk up the stairs and find him. It is an optimistic plan. It is also, the film makes quietly clear, a fantasy. The probability of the Kim family ever purchasing that property through legitimate means is essentially zero.</p>
+    <p>Bong cuts between Ki-woo's imagined future — sunny, warm, the reunion on the stairs — and the reality of Ki-woo sitting in the semi-basement, tears on his face. The plan exists only in his mind. The film ends not with despair exactly, but with the acknowledgment that aspiration and mobility are not the same thing.</p>
+    <div class="verdict-box">
+      <p class="verdict-label">[ Verdict ]</p>
+      <p class="verdict-text"><em>Parasite</em> makes you laugh, then implicates you for laughing, then makes you watch the consequences, then denies you a clean resolution. Bong built a trap for his audience that mirrors the trap his characters are inside. It is one of the most complete works of popular cinema in the 21st century.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     ARTICLE: INCEPTION
+══════════════════════════════════════════════════ -->
+<div id="article-inception" class="article-page">
+  <span class="back-link" onclick="goBack()">← Back</span>
+  <div class="film-hero">
+    <p class="eyebrow">[ Sci-Fi · 2010 · 148 min ]</p>
+    <h1 class="film-title">Inception</h1>
+    <p class="film-subtitle">The most people have been tricked into thinking they understood a film.</p>
+    <div class="film-meta-row">
+      <span>Dir. Christopher Nolan</span><span>·</span>
+      <span>DoP: Wally Pfister</span><span>·</span>
+      <span>Ed. Lee Smith</span>
+    </div>
+    <div class="spoiler-banner"><span>⚠</span><span>Full spoilers — discusses the ending and the top in detail.</span></div>
+    <div class="rating-row"><span class="stars">★★★★½</span><span class="rating-label">Excellent</span></div>
+  </div>
+  <div class="article-body">
+    <div class="section-marker"><span class="frame-count">[ 001 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">The Setup: Grief Disguised as a Heist</h2>
+    <p>Christopher Nolan's <em>Inception</em> is frequently described as a film about dreams, or a film about the mechanics of the subconscious, or a puzzle box thriller in which the question of whether Cobb (Leonardo DiCaprio) is dreaming at any given moment is the central mystery. All of these framings are correct and none of them are the point. <em>Inception</em> is a film about a man who cannot stop dreaming about his dead wife — and who has built an entire elaborate professional apparatus to avoid confronting why.</p>
+    <p>Cobb is an extractor: a thief who enters other people's dreams and steals secrets from their subconscious. He is hired to perform inception — the reverse, planting an idea rather than taking one. The target is Robert Fischer (Cillian Murphy), heir to an energy empire. The job is the structure on which the film's real emotional architecture is hung. Mal, Cobb's dead wife (Marion Cotillard), is the film.</p>
+    <div class="pull-quote">
+      <p>"You're waiting for a train. A train that will take you far away. You know where you hope the train will take you. But you can't know for sure."</p>
+      <cite>— Mal Cobb</cite>
+    </div>
+
+    <div class="section-marker"><span class="frame-count">[ 002 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Wally Pfister and the Architecture of the Impossible</h2>
+    <p>Wally Pfister's cinematography earned him an Oscar, and the reason is visible in almost every frame: he shoots the impossible as though it were ordinary. The famous Paris folding sequence — streets curling up on themselves, entire city blocks rotating — is filmed with the same wide, naturalistic light Pfister would use for a street scene. The effect is deeply unsettling precisely because the camera refuses to be impressed.</p>
+    <p>Nolan and production designer Guy Hendrix Dyas build each dream level with a distinct visual register. The van chase is rain-drenched, kinetic, almost neo-noir. The hotel corridor is weightless modernist architecture. The snow fortress is austere James Bond geography. These are not random choices — they reflect whose subconscious is being drawn from and, crucially, what emotional register each level of the operation is working in.</p>
+
+    <div class="section-marker"><span class="frame-count">[ 003 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Mal and the Unreliable Narrator Problem</h2>
+    <p>The film's most important and least-discussed element is that everything we know about Mal comes from Cobb — a man who is, by professional necessity, an expert at constructing false realities and implanting ideas in unwilling minds. When Cobb tells us that Mal became convinced reality was a dream and had to be brought back, we have only his account. When he tells us she was wrong to believe the world around her was constructed, we are being asked to trust the film's most demonstrably untrustworthy narrator.</p>
+    <p>This is where the ending's ambiguity becomes genuinely meaningful, rather than a clever puzzle. The spinning top in the final scene — which begins to wobble, possibly, before the cut to black — is not asking whether Cobb is dreaming. It is asking whether you believe Cobb's version of events, about Mal, about what he did to her, about why she is dead. The top is not a reality test. It is a character test. The film cuts to black before you can answer.</p>
+    <div class="pull-quote">
+      <p>The top is not a reality test. It is a question about whether you trust the man who is spinning it. The film cuts to black before you can decide.</p>
+      <cite>— Frame One</cite>
+    </div>
+
+    <div class="section-marker"><span class="frame-count">[ 004 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">DiCaprio and Cotillard: The Weight of a Ghost</h2>
+    <p>DiCaprio plays Cobb as a man running from something he understands perfectly and refuses to name. The performance is all suppression — grief channelled into operational focus, vulnerability contained behind professionalism. It is only in the scenes with Mal's projection that the containment cracks, and these are the film's best moments: two performers working at the edge of what the genre will support emotionally.</p>
+    <p>Cotillard's Mal is one of the great supporting performances in Nolan's filmography. She has to be simultaneously a projection of Cobb's subconscious — which means she behaves with the logic of a dream, not a person — and, in Cobb's memory sequences, a real woman with an interior life. She manages both, which is the only reason the film's emotional stakes feel earned by its final act.</p>
+    <div class="verdict-box">
+      <p class="verdict-label">[ Verdict ]</p>
+      <p class="verdict-text"><em>Inception</em> is a smarter film than its reputation suggests and a more emotionally precise one than its mechanics imply. Strip out the heist architecture and what remains is a film about grief, guilt, and the danger of building a world around a person who is no longer in it.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     ARTICLE: SPIRITED AWAY
+══════════════════════════════════════════════════ -->
+<div id="article-spiritedaway" class="article-page">
+  <span class="back-link" onclick="goBack()">← Back</span>
+  <div class="film-hero">
+    <p class="eyebrow">[ Animation · 2001 · 125 min ]</p>
+    <h1 class="film-title">Spirited Away</h1>
+    <p class="film-subtitle">A film about growing up that understands growing up is terrifying.</p>
+    <div class="film-meta-row">
+      <span>Dir. Hayao Miyazaki</span><span>·</span>
+      <span>Animation Dir: Masashi Ando</span><span>·</span>
+      <span>Music: Joe Hisaishi</span>
+    </div>
+    <div class="spoiler-banner"><span>⚠</span><span>Full spoilers — discusses the film's resolution and Yubaba's contract in detail.</span></div>
+    <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-label">Essential</span></div>
+  </div>
+  <div class="article-body">
+    <div class="section-marker"><span class="frame-count">[ 001 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">The Child Alone: Miyazaki's Specific Fear</h2>
+    <p>Hayao Miyazaki's <em>Spirited Away</em> begins with a sulking ten-year-old in a car, unhappy about moving house, and ends with the same girl having negotiated with spirits, worked in a bathhouse, crossed a flooded plain on foot, and ridden a dragon. The transformation is enormous. The film never announces it. It simply requires Chihiro to grow and then lets her, frame by frame, become someone who can.</p>
+    <p>The spirit world Chihiro stumbles into is not frightening in the way horror is frightening. It is frightening in the way that the first day at a new school is frightening — overwhelming, rule-governed, full of social dynamics she doesn't understand, where getting something wrong has consequences she can't anticipate. Miyazaki has described the film as being made for ten-year-old girls, which is accurate, and also a significant underestimation of what ten-year-old girls are capable of understanding.</p>
+    <div class="pull-quote">
+      <p>Once you meet someone, you never really forget them. It just takes a while for your memories to return.</p>
+      <cite>— Zeniba</cite>
+    </div>
+
+    <div class="section-marker"><span class="frame-count">[ 002 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">The Animation: Hand-Drawn at the Edge of Its Own Limits</h2>
+    <p>Studio Ghibli's production process for <em>Spirited Away</em> was hand-drawn animation at a scale and detail that has not been attempted since. The bathhouse is an architectural impossibility rendered with meticulous internal consistency — hundreds of rooms, an economy of labour, a social hierarchy expressed entirely through visual rhythm and spatial logic. When Chihiro descends through the building, the camera moves through space in ways that CGI makes trivial but which, in hand-drawn form, required every frame to be individually conceived and produced.</p>
+    <p>Joe Hisaishi's score is the film's other animating force. It operates not as underscore but as a parallel emotional track — the train sequence across the flooded plain, where nothing is said and almost nothing happens, is sustained entirely by Hisaishi's music and the extraordinary control of pace and silence that Miyazaki exercises. It is one of the great sequences in animation, and it would be nothing without the music holding its emotional space open.</p>
+
+    <div class="section-marker"><span class="frame-count">[ 003 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Work, Identity, and the Stolen Name</h2>
+    <p>The film's central mechanism — Yubaba takes Chihiro's name, leaving her with only "Sen," so that she will forget who she is and never leave the bathhouse — is one of the most elegant expressions of the film's thematic concerns. Identity is what Chihiro is fighting to preserve. The spirit world is full of beings who have lost theirs: No-Face, who absorbs the personalities of everyone around him because he has none of his own; the river spirit, so polluted he has forgotten what he is; Haku, who cannot remember his real name and therefore cannot go home.</p>
+    <p>Chihiro's victory is not defeating Yubaba. It is remembering — not just her own name at the end, but Haku's name, which she has kept inside her without knowing it. The film proposes that identity is relational: you find out who you are by remembering who loved you and who you loved, not by asserting yourself in isolation.</p>
+    <div class="pull-quote">
+      <p>The spirit world is full of creatures who have forgotten what they are. Chihiro's task is simply to remember — and in doing so, help others do the same.</p>
+      <cite>— Frame One</cite>
+    </div>
+
+    <div class="section-marker"><span class="frame-count">[ 004 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">What the Film Actually Says About Growing Up</h2>
+    <p>Most coming-of-age films are about becoming. <em>Spirited Away</em> is about maintaining — holding onto who you are under conditions that are systematically designed to make you forget. Chihiro does not end the film wiser in a conventional sense. She ends it with the same personality she had at the beginning, just tested and proven. Miyazaki's argument is that growing up is not acquiring something new. It is discovering that what you already had was enough.</p>
+    <p>The film's final moment — Chihiro emerging from the spirit world, her parents turned back from pigs, everything returned to normal — is deliberately undramatic. She does not look back. The adventure is over. School is starting. Miyazaki trusts that the audience understands what has changed, without the film needing to say it.</p>
+    <div class="verdict-box">
+      <p class="verdict-label">[ Verdict ]</p>
+      <p class="verdict-text"><em>Spirited Away</em> is the best animated film ever made, and one of the best films of any kind from the 21st century. It works on children as adventure and on adults as grief — the grief of a world growing more complicated and a self that has to grow with it.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     ARTICLE: MEMENTO
+══════════════════════════════════════════════════ -->
+<div id="article-memento" class="article-page">
+  <span class="back-link" onclick="goBack()">← Back</span>
+  <div class="film-hero">
+    <p class="eyebrow">[ Neo-Noir · 2000 · 113 min ]</p>
+    <h1 class="film-title">Memento</h1>
+    <p class="film-subtitle">A film about memory that makes you live inside the loss of it.</p>
+    <div class="film-meta-row">
+      <span>Dir. Christopher Nolan</span><span>·</span>
+      <span>DoP: Wally Pfister</span><span>·</span>
+      <span>Ed. Dody Dorn</span>
+    </div>
+    <div class="spoiler-banner"><span>⚠</span><span>Full spoilers — discusses Teddy's revelation and the film's full structure.</span></div>
+    <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-label">Essential</span></div>
+  </div>
+  <div class="article-body">
+    <div class="section-marker"><span class="frame-count">[ 001 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">The Structure Is the Argument</h2>
+    <p>Christopher Nolan's <em>Memento</em> tells its story in reverse — or more precisely, in alternating sequences: colour scenes running backward from the end, black-and-white scenes running forward from an earlier point, the two threads converging in the final minutes. This is not a gimmick. It is a formal argument about the relationship between narrative and truth. By experiencing the film the way we do, we share Leonard Shelby's condition: we know what just happened but not what led to it, and we cannot trust our own understanding of events because it is assembled out of sequence.</p>
+    <p>Leonard (Guy Pearce) has anterograde amnesia — he cannot form new memories. He is hunting the man who he believes murdered his wife. He manages his condition through Polaroids, tattooed notes on his body, and a system of trusted and untrusted sources. The system, the film eventually reveals, is catastrophically compromised — not by external manipulation alone, but by Leonard's own choices.</p>
+    <div class="pull-quote">
+      <p>"Memory can change the shape of a room; it can change the colour of a car. And memories can be distorted. They're just an interpretation, they're not a record."</p>
+      <cite>— Leonard Shelby</cite>
+    </div>
+
+    <div class="section-marker"><span class="frame-count">[ 002 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">The Unreliable System: What Leonard Does to Himself</h2>
+    <p>The film's deepest and most uncomfortable revelation is not that Teddy (Joe Pantoliano) has been manipulating Leonard. It is that Leonard knows — on some level, in some preserved instinct — that he has already found and killed his wife's real murderer. He knows, and he has chosen to forget. He has built a system that will keep him hunting forever because stopping means confronting the fact that purpose was all he had left.</p>
+    <p>Nolan implicates the audience in this directly. We have been watching Leonard with sympathy, experiencing his confusion as our own, rooting for his investigation to succeed. When Teddy's account emerges — which may also be self-serving and cannot be fully trusted — the ground shifts. We realise that we have been inside an unreliable narrator without the usual cues that signal unreliability. There was no winking at the camera, no dream sequence tell. We were just wrong, the way Leonard is wrong, for the same reasons.</p>
+
+    <div class="section-marker"><span class="frame-count">[ 003 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Pfister's Visual Language: Two Worlds in the Same Film</h2>
+    <p>Wally Pfister shoots the colour sequences with the grimy, saturated look of a 1970s neo-noir — overexposed daylight, neon interiors, the visual vocabulary of paranoia and pursuit. The black-and-white sequences are cooler, stiller, almost clinical — the world of Leonard's motel room monologues and phone conversations, the world of explanation and theory rather than action.</p>
+    <p>This visual division is functional. The colour sequences are what Leonard is doing. The black-and-white sequences are what Leonard believes. By the time the two threads converge, you understand that these are not just different time periods — they are different epistemological registers. Doing and believing, for Leonard, have become permanently disconnected.</p>
+    <div class="pull-quote">
+      <p>The reverse chronology doesn't just disorient you. It makes you feel, at the level of experience rather than understanding, what it is to live without a continuity of self.</p>
+      <cite>— Frame One</cite>
+    </div>
+
+    <div class="section-marker"><span class="frame-count">[ 004 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Guy Pearce: A Performance Without Handholds</h2>
+    <p>Guy Pearce's performance operates under a specific constraint that most actors never face: Leonard cannot carry emotional arcs across scenes, because he cannot remember the scenes that preceded them. Each sequence begins fresh. Pearce has to build the character's interiority through the moments themselves — through instinct, through physical bearing, through the quality of attention Leonard pays to the world around him as though he might need to reconstruct it from scratch at any moment.</p>
+    <p>What Pearce locates is the particular loneliness of Leonard's condition: not the dramatic loneliness of tragedy, but the administrative loneliness of a man who has had to build bureaucratic systems to replace the connections that memory usually provides. He is organized where he should be emotional. He is methodical where he should be present. Pearce makes this feel less like a neurological condition and more like a portrait of grief that has calcified into procedure.</p>
+    <div class="verdict-box">
+      <p class="verdict-label">[ Verdict ]</p>
+      <p class="verdict-text"><em>Memento</em> is Nolan's most formally rigorous film and the one that most completely earns its structure. The reverse chronology is not a trick — it is the only honest way to tell this story. A film about the impossibility of objective memory that implicates you in the very failure it describes.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     ARTICLE: THE SHINING
+══════════════════════════════════════════════════ -->
+<div id="article-shining" class="article-page">
+  <span class="back-link" onclick="goBack()">← Back</span>
+  <div class="film-hero">
+    <p class="eyebrow">[ Horror · 1980 · 146 min ]</p>
+    <h1 class="film-title">The Shining</h1>
+    <p class="film-subtitle">Not a haunted hotel film. A film about what happens inside a marriage when the doors close.</p>
+    <div class="film-meta-row">
+      <span>Dir. Stanley Kubrick</span><span>·</span>
+      <span>DoP: John Alcott</span><span>·</span>
+      <span>Ed. Ray Lovejoy</span>
+    </div>
+    <div class="spoiler-banner"><span>⚠</span><span>Full spoilers — discusses Jack's arc and the film's ending.</span></div>
+    <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-label">Essential</span></div>
+  </div>
+  <div class="article-body">
+    <div class="section-marker"><span class="frame-count">[ 001 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Kubrick's Deviation: The Supernatural as Metaphor</h2>
+    <p>Stephen King famously disliked Stanley Kubrick's adaptation of his novel — and his reasons are illuminating. King's <em>The Shining</em> is about a good man destroyed by external supernatural forces; a tragedy of victimhood. Kubrick's <em>The Shining</em> is about a man who was always going to do this, and a hotel that simply provided the conditions for what was already there to surface. Jack Torrance (Jack Nicholson) is not corrupted by the Overlook. He is recognised by it.</p>
+    <p>This is why Kubrick removes almost all of King's supernatural machinery. The hedge animals that move in the novel become a static maze in the film. The hotel's malevolence is ambient, architectural, felt rather than demonstrated. What Kubrick is interested in is not ghosts. It is the phenomenology of domestic terror — how a family comes to be afraid of the person they live with, how that fear accumulates, how the space of home becomes the space of threat.</p>
+    <div class="pull-quote">
+      <p>"Here's Johnny."</p>
+      <cite>— Jack Torrance</cite>
+    </div>
+
+    <div class="section-marker"><span class="frame-count">[ 002 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">The Steadicam and the Architecture of Dread</h2>
+    <p>John Alcott's cinematography, working with Garrett Brown's Steadicam — then a new technology — gives <em>The Shining</em> its signature uncanniness. The camera glides through the Overlook's corridors at child height, following Danny's tricycle through the geometric carpet patterns, turning corners to reveal empty hallways or, suddenly, something that should not be there. The smoothness of the movement is what makes it frightening: a floating, weightless persistence that feels like the hotel itself is watching.</p>
+    <p>Kubrick's use of the Overlook's space is architectural horror at its most precise. The hotel's geography is deliberately incoherent — rooms that should not exist given the building's exterior, windows in walls that face inward, spatial relationships that do not add up. This is not a continuity error. It is Kubrick making the building itself subtly wrong, so that the unease operates below conscious recognition.</p>
+
+    <div class="section-marker"><span class="frame-count">[ 003 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Wendy Torrance and the Film's Real Subject</h2>
+    <p>Shelley Duvall's Wendy Torrance has been systematically undervalued — critics who dismiss her performance as hysterical are describing the character's situation, not the performance's quality. Wendy is a woman managing a man who is visibly deteriorating while being isolated from any support system, gaslit about what she is seeing, and physically trapped. Duvall plays someone rationing her fear, calibrating how much she can show at any given moment without provoking escalation. This is not hysteria. This is the very specific performance of a woman who has been managing an unstable man for a long time and knows which behaviours are safe to display.</p>
+    <p>The film's horror is Wendy's horror. The scenes in which Jack reads his manuscript — page after page of "All work and no play makes Jack a dull boy" — and the axe through the bathroom door are frightening because Duvall makes you feel what it is to be in the room with someone who has decided to stop performing sanity. That is not a supernatural experience. It is an experience of intimate violence, and Kubrick knew exactly what he was filming.</p>
+    <div class="pull-quote">
+      <p>Wendy's performance has been called hysterical for decades. It is actually the film's most precise and least appreciated piece of acting — a portrait of a woman managing escalating danger in real time.</p>
+      <cite>— Frame One</cite>
+    </div>
+
+    <div class="section-marker"><span class="frame-count">[ 004 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">The Final Photograph: History Repeating</h2>
+    <p>The film's last image — a photograph of the Overlook's 1921 Fourth of July ball, with Jack Torrance in the centre of the frame, smiling — is one of the most discussed endings in cinema history. It suggests that Jack is not a singular event but a recurring one: that the Overlook has hosted versions of him before, will host them again, that the pattern of a man destroying his family in an enclosed space is something the hotel has seen many times and found entirely unremarkable.</p>
+    <p>Kubrick offers no explanation. The photograph simply exists, historically verifiable within the world of the film, and the horror of it is structural: whatever Jack Torrance is, he is not exceptional. He is a type. The hotel has been collecting them.</p>
+    <div class="verdict-box">
+      <p class="verdict-label">[ Verdict ]</p>
+      <p class="verdict-text"><em>The Shining</em> is Kubrick's most emotionally intelligent film — which is a strange thing to say about a horror movie, but it is true. Beneath the supernatural dressing is an extraordinarily precise account of domestic violence, isolation, and the architecture of terror in the home. It has not aged. It will not age.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     ARTICLE: THE SHAWSHANK REDEMPTION
+══════════════════════════════════════════════════ -->
+<div id="article-shawshank" class="article-page">
+  <span class="back-link" onclick="goBack()">← Back</span>
+  <div class="film-hero">
+    <p class="eyebrow">[ Drama · 1994 · 142 min ]</p>
+    <h1 class="film-title">The Shawshank Redemption</h1>
+    <p class="film-subtitle">The most comforting film ever made — which is also the reason to be suspicious of it.</p>
+    <div class="film-meta-row">
+      <span>Dir. Frank Darabont</span><span>·</span>
+      <span>DoP: Roger Deakins</span><span>·</span>
+      <span>Ed. Richard Francis-Bruce</span>
+    </div>
+    <div class="spoiler-banner"><span>⚠</span><span>Full spoilers — discusses Andy's escape and the film's ending.</span></div>
+    <div class="rating-row"><span class="stars">★★★★</span><span class="rating-label">Very Good</span></div>
+  </div>
+  <div class="article-body">
+    <div class="section-marker"><span class="frame-count">[ 001 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">The Setup: Hope as a Prison Film's Central Argument</h2>
+    <p>Frank Darabont's <em>The Shawshank Redemption</em> was a box office disappointment on release and became, over the following decade via home video and cable television, the highest-rated film on IMDb — a position it has held, with minor fluctuations, for nearly thirty years. This trajectory is significant. <em>Shawshank</em> is not a film that rewards a single theatrical viewing as much as it rewards repeated, comfort viewings. It is, in the most precise sense, a film designed to make you feel better. Understanding how it achieves this, and what it costs to achieve it, is the most interesting thing you can do with it.</p>
+    <p>Andy Dufresne (Tim Robbins) is convicted of murdering his wife and her lover — a conviction the film tells us immediately is unjust. He arrives at Shawshank State Penitentiary, befriends Ellis Boyd "Red" Redding (Morgan Freeman), and over nineteen years maintains, against all evidence, a fundamental inner freedom that the institution cannot touch. The film's argument, stated plainly, is that the spirit cannot be imprisoned. This is a beautiful idea. It is also, examined carefully, a somewhat troubling one.</p>
+    <div class="pull-quote">
+      <p>"Remember, Red, hope is a good thing — maybe the best of things. And no good thing ever dies."</p>
+      <cite>— Andy Dufresne</cite>
+    </div>
+
+    <div class="section-marker"><span class="frame-count">[ 002 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Roger Deakins and the Visual Language of Endurance</h2>
+    <p>Roger Deakins's cinematography is the primary reason the film's sentimentality doesn't collapse into saccharine. He shoots Shawshank as a genuinely brutal place — cold stone, institutional grey, the particular quality of light that comes through barred windows — while finding, within that environment, moments of warmth that feel earned rather than imposed. The rooftop beer sequence, the Italian aria played over the prison PA, the library built one book at a time: these are lit as oases, genuinely warm within genuinely cold surroundings.</p>
+    <p>Thomas Newman's score is the film's other structural backbone — one of the most effective uses of minimalist orchestral writing in American cinema of the period, achieving a quality of gentle yearning that matches the film's emotional register precisely. It is impossible to imagine <em>Shawshank</em> without it, which is a sign of how thoroughly the music has been absorbed into the film's identity.</p>
+
+    <div class="section-marker"><span class="frame-count">[ 003 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">The Uncomfortable Question: Who Does the Film Imagine?</h2>
+    <p>The film's central problematic is one that its popularity has insulated from scrutiny. Andy Dufresne is exceptional in ways that the film presents as the source of his survival — his intelligence, his financial skills, his taste in music and literature. He endures Shawshank and escapes it because he is special. The film does not interrogate what happens to the prisoners who are not special, who do not have useful skills to offer the warden, who cannot tunnel out. Brooks, who is institutionalised and cannot survive outside, is the film's gesture toward this question. His death functions as pathos rather than critique.</p>
+    <p>This is not a reason to dismiss the film. It is a reason to understand what the film is doing: offering the fantasy of individual exceptionalism as a response to systemic imprisonment. The fantasy is moving and well-executed. But it is a fantasy, and the film's enormous popularity is partly explained by how effectively it allows audiences to believe that the right interior life is sufficient to transcend the wrong external circumstances.</p>
+    <div class="pull-quote">
+      <p>The film asks you to feel that the spirit cannot be imprisoned. It is less interested in asking what happens to those whose spirits are, in fact, broken by the process.</p>
+      <cite>— Frame One</cite>
+    </div>
+
+    <div class="section-marker"><span class="frame-count">[ 004 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Freeman, Robbins, and the Friendship That Carries Everything</h2>
+    <p>The film succeeds — and it does genuinely succeed — on the strength of its central relationship. Morgan Freeman's Red is the performance of his career: a man who has been inside long enough to have made peace with limitation, rediscovering through Andy the cost of that peace. The voiceover, which should be a crutch, works because Freeman delivers it as genuine reflection rather than narration. You believe Red is a person who thinks this way, not a device delivering the film's themes.</p>
+    <p>Robbins's Andy is harder to play than he appears — he must be warm enough to be loved, contained enough to be mysterious, and present enough to make the friendship feel real rather than symbolic. The final reunion on the beach in Zihuatanejo is shamelessly manipulative. It also, entirely, works. Darabont earns it, which is the only standard that matters.</p>
+    <div class="verdict-box">
+      <p class="verdict-label">[ Verdict ]</p>
+      <p class="verdict-text"><em>The Shawshank Redemption</em> is a technically accomplished, emotionally generous, and ideologically comfortable film. Its popularity is not accidental — it gives people exactly what it promises. The question of whether what it promises is fully honest is worth sitting with, even if the answer doesn't change how the reunion feels.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     ARTICLE: INTERSTELLAR
+══════════════════════════════════════════════════ -->
+<div id="article-interstellar" class="article-page">
+  <span class="back-link" onclick="goBack()">← Back</span>
+  <div class="film-hero">
+    <p class="eyebrow">[ Sci-Fi · 2014 · 169 min ]</p>
+    <h1 class="film-title">Interstellar</h1>
+    <p class="film-subtitle">The science is real. The grief is realer.</p>
+    <div class="film-meta-row">
+      <span>Dir. Christopher Nolan</span><span>·</span>
+      <span>DoP: Hoyte van Hoytema</span><span>·</span>
+      <span>Ed. Lee Smith</span>
+    </div>
+    <div class="spoiler-banner"><span>⚠</span><span>Full spoilers — discusses the tesseract, Cooper's return, and the film's ending.</span></div>
+    <div class="rating-row"><span class="stars">★★★★½</span><span class="rating-label">Excellent</span></div>
+  </div>
+  <div class="article-body">
+    <div class="section-marker"><span class="frame-count">[ 001 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">The Setup: Love as a Physical Force</h2>
+    <p>Christopher Nolan's <em>Interstellar</em> is routinely criticised for the scene in which Anne Hathaway's Brand argues that love may be a force with physical properties — quantifiable, transmittable across dimensions, real in the way gravity is real. The criticism is that this is sentimental pseudoscience dressed up as cosmic argument. The critics are not wrong about the science. They are wrong about what the film is doing with it.</p>
+    <p><em>Interstellar</em> is not actually making a scientific claim about love. It is making a structural one: the film is designed so that the emotional and the physical are inseparable, so that Cooper (Matthew McConaughey) navigating a tesseract inside a black hole and tapping messages to his daughter across time is both a scientifically grounded act and a deeply human one. The film wants these to be the same thing. Whether it fully succeeds is the most interesting question you can ask about it.</p>
+    <div class="pull-quote">
+      <p>"Love is the one thing we're capable of perceiving that transcends time and space."</p>
+      <cite>— Dr. Amelia Brand</cite>
+    </div>
+
+    <div class="section-marker"><span class="frame-count">[ 002 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Hoyte van Hoytema and the Scale of the Intimate</h2>
+    <p>Hoyte van Hoytema replaced Wally Pfister as Nolan's cinematographer for this film, and the shift is visible. Where Pfister tended toward controlled, architectural compositions, van Hoytema is drawn to a more organic quality — the farmhouse sequences have an almost documentary texture, the kind of light that feels like it happened rather than was designed. This grounds the film's emotional stakes in something tactile before the scale expands into the interstellar.</p>
+    <p>The space sequences are among the most visually ambitious in contemporary science fiction — particularly the water planet, with its tidal waves filmed at scale, and the approach to Gargantua, the black hole whose appearance was generated in consultation with theoretical physicist Kip Thorne and produced visual data that contributed to actual scientific papers. The film takes its science seriously enough to generate new knowledge from it, which is unusual for the genre.</p>
+
+    <div class="section-marker"><span class="frame-count">[ 003 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">Time Dilation and the Film's Emotional Architecture</h2>
+    <p>The film's most devastating sequence — the scene in which Cooper, returning from the water planet after an hour that has cost twenty-three years, watches the video messages his children have sent across that gap — is the purest expression of what <em>Interstellar</em> is actually about. It is about the time that passes between people who love each other when the conditions of their lives keep them apart. The physics of time dilation is a literalisation of something emotionally real: the sensation that you have missed things you cannot recover, that the people you left are older than they should be, that time has been asymmetrically kind.</p>
+    <p>McConaughey's reaction in this scene — grief arriving in waves, the controlled collapse of a man watching his son become middle-aged in the space of four minutes — is the best performance of his career, in a scene that the film has earned through everything that precedes it. Hans Zimmer's score, built around a church organ and a sense of weight and breath, holds the scene open without manipulating it.</p>
+    <div class="pull-quote">
+      <p>Cooper watching his children age across a video feed is the film's emotional core — a scientifically accurate metaphor for all the time that passes between people who cannot be in the same place.</p>
+      <cite>— Frame One</cite>
+    </div>
+
+    <div class="section-marker"><span class="frame-count">[ 004 ]</span><div class="frame-rule"></div></div>
+    <h2 class="section-heading">The Tesseract and the Limits of Nolan's Ambition</h2>
+    <p>The film's third act — Cooper inside a tesseract, a five-dimensional space constructed by future humans to allow him to communicate across time — is where <em>Interstellar</em> most clearly shows its ambitions and their limits. The visual representation of the tesseract (infinite bookshelves encoding time as spatial dimension) is one of the most visually inventive things Nolan has committed to film. The resolution — Cooper realising he is the "ghost" and tapping the coordinates in the dust — is emotionally satisfying in a way that the film has worked hard to earn.</p>
+    <p>The problem is that the film concludes not with ambiguity but with a tidy loop: Cooper is rescued, reunited briefly with an elderly Murph, and departs to find Brand on Edmunds' planet. The openness the film seemed to be building toward — the suggestion that the universe's relationship to human consciousness might be something stranger than we can resolve — is traded for closure. Nolan's instinct, ultimately, is to explain. <em>Interstellar</em> is the film in which that instinct costs the most.</p>
+    <div class="verdict-box">
+      <p class="verdict-label">[ Verdict ]</p>
+      <p class="verdict-text"><em>Interstellar</em> reaches further than any of Nolan's other films and stumbles slightly in the reaching. What it achieves — the emotional precision of the time-dilation sequences, the visual ambition of the space photography, the central father-daughter relationship — is remarkable. What it costs to achieve it is one unnecessary act of resolution too many. It is still one of the great science fiction films of its era.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <p>Frame One — Film Analysis — All opinions are the author's own</p>
+</footer>
+
+<script>
+  const ALL_ARTICLES = ['whiplash','getout','fightclub','godfather','parasite','inception','spiritedaway','memento','shining','shawshank','interstellar'];
+  let lastPage = 'index';
+
+  function showPage(page) {
+    // hide everything
+    document.getElementById('page-index').style.display = 'none';
+    document.getElementById('page-directory').style.display = 'none';
+    ALL_ARTICLES.forEach(id => document.getElementById('article-' + id).style.display = 'none');
+
+    // update nav active state
+    document.getElementById('nav-index').classList.toggle('active', page === 'index');
+    document.getElementById('nav-directory').classList.toggle('active', page === 'directory');
+
+    document.getElementById('page-' + page).style.display = 'block';
+    lastPage = page;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function showArticle(id) {
+    document.getElementById('page-index').style.display = 'none';
+    document.getElementById('page-directory').style.display = 'none';
+    ALL_ARTICLES.forEach(a => document.getElementById('article-' + a).style.display = 'none');
+    document.getElementById('nav-index').classList.remove('active');
+    document.getElementById('nav-directory').classList.remove('active');
+    document.getElementById('article-' + id).style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function goBack() {
+    showPage(lastPage);
+  }
+</script>
 </body>
 </html>
