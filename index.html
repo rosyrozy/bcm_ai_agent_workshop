@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cut to Black — Film Reviews</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0e0e0e;
+      --off-white: #f5f3ef;
+      --mid: #9a9a9a;
+      --accent: #c8392b;
+      --rule: #2a2a2a;
+    }
+
+    html { font-size: 17px; }
+
+    body {
+      background: var(--black);
+      color: var(--off-white);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 4rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.02em;
+      color: var(--off-white);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    nav ul a {
+      color: var(--mid);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--off-white); }
+
+    /* HERO */
+    .hero {
+      padding: 6rem 4rem 4rem;
+      max-width: 860px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      line-height: 1.15;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-sub {
+      color: var(--mid);
+      font-size: 1rem;
+      max-width: 520px;
+      line-height: 1.6;
+    }
+
+    /* DIVIDER */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 0 4rem;
+    }
+
+    /* POST LIST */
+    .post-list {
+      padding: 4rem;
+    }
+
+    .post-card {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 3rem;
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--rule);
+      cursor: pointer;
+    }
+
+    .post-card:hover .post-title {
+      color: var(--accent);
+    }
+
+    .post-meta {
+      padding-top: 0.25rem;
+    }
+
+    .post-rating {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .post-rating span {
+      font-size: 1rem;
+      color: var(--mid);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+    }
+
+    .post-year {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 0.5rem;
+    }
+
+    .post-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--rule);
+      padding: 0.2rem 0.6rem;
+      color: var(--mid);
+    }
+
+    .post-body {}
+
+    .post-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+      transition: color 0.2s;
+    }
+
+    .post-deck {
+      color: var(--mid);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      max-width: 560px;
+    }
+
+    .read-more {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 0.1rem;
+      transition: opacity 0.2s;
+    }
+
+    .read-more:hover { opacity: 0.7; }
+
+    /* FULL REVIEW */
+    .review-page {
+      display: none;
+      padding: 4rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .review-page.active { display: block; }
+    .post-list.hidden { display: none; }
+    .hero.hidden { display: none; }
+
+    .back-btn {
+      background: none;
+      border: none;
+      color: var(--mid);
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0;
+      transition: color 0.2s;
+    }
+
+    .back-btn:hover { color: var(--off-white); }
+
+    .review-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .review-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .review-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--rule);
+      flex-wrap: wrap;
+    }
+
+    .review-score {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .review-score span {
+      font-size: 0.9rem;
+      color: var(--mid);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+    }
+
+    .meta-divider {
+      width: 1px;
+      height: 2rem;
+      background: var(--rule);
+    }
+
+    .meta-item {
+      font-size: 0.8rem;
+      color: var(--mid);
+    }
+
+    .meta-item strong {
+      display: block;
+      color: var(--off-white);
+      font-weight: 500;
+      font-size: 0.85rem;
+    }
+
+    .review-content p {
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .review-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 2.5rem 0 1rem;
+      color: var(--off-white);
+    }
+
+    .review-content .pull-quote {
+      border-left: 3px solid var(--accent);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--off-white);
+      line-height: 1.5;
+    }
+
+    .verdict-box {
+      background: #161616;
+      border: 1px solid var(--rule);
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+
+    .verdict-box h3 {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .verdict-box p {
+      margin-bottom: 0 !important;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 3rem 4rem;
+      border-top: 1px solid var(--rule);
+      color: var(--mid);
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 700px) {
+      nav, .hero, .post-list, .review-page, footer { padding: 1.5rem; }
+      .post-card { grid-template-columns: 1fr; gap: 1rem; }
+      .divider { margin: 0 1.5rem; }
+      nav ul { gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="logo">Cut to <span>Black</span></a>
+    <ul>
+      <li><a href="#">Reviews</a></li>
+      <li><a href="#">Essays</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- HOME VIEW -->
+  <div id="home-view">
+    <div class="hero">
+      <p class="hero-eyebrow">Film Reviews</p>
+      <h1>Cinema, argued over honestly.</h1>
+      <p class="hero-sub">Full spoilers. No hedging. Written for people who actually watch films.</p>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="post-list">
+      <div class="post-card" onclick="showReview()">
+        <div class="post-meta">
+          <div class="post-rating">9<span>/10</span></div>
+          <div class="post-year">2014</div>
+          <div class="post-tags">
+            <span class="tag">Drama</span>
+            <span class="tag">Music</span>
+            <span class="tag">Chazelle</span>
+          </div>
+        </div>
+        <div class="post-body">
+          <h2 class="post-title">Whiplash: The Cost of Greatness Is Someone Else's Decision</h2>
+          <p class="post-deck">Damien Chazelle's film is a masterclass in craft that asks a genuinely difficult question — and has the integrity not to answer it cleanly.</p>
+          <a class="read-more" href="#" onclick="event.preventDefault(); showReview()">Read review →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEW VIEW -->
+  <div class="review-page" id="review-view">
+    <button class="back-btn" onclick="showHome()">← All reviews</button>
+
+    <p class="review-eyebrow">Review — Drama / 2014</p>
+    <h1 class="review-title">Whiplash: The Cost of Greatness Is Someone Else's Decision</h1>
+
+    <div class="review-meta-row">
+      <div class="review-score">9<span>/10</span></div>
+      <div class="meta-divider"></div>
+      <div class="meta-item"><strong>Director</strong>Damien Chazelle</div>
+      <div class="meta-divider"></div>
+      <div class="meta-item"><strong>Runtime</strong>107 minutes</div>
+      <div class="meta-divider"></div>
+      <div class="meta-item"><strong>Starring</strong>Miles Teller, J.K. Simmons</div>
+    </div>
+
+    <div class="review-content">
+
+      <p>There's a moment near the end of Whiplash where Andrew Neiman sits behind a drum kit, publicly humiliated, and decides to play anyway. Not because he's been asked to. Not because it's safe. But because something in him can't not. That moment is the whole film in miniature — and it's also the most troubling thing about it.</p>
+
+      <h2>The Story</h2>
+      <p>Andrew Neiman is a first-year jazz drummer at the most prestigious music conservatory in the United States. He gets picked up by Fletcher, the school's feared conductor, and thrown into the top ensemble. What follows is less a music story and more a psychological war. Fletcher abuses, manipulates, and humiliates his students in the name of pushing them toward greatness. Andrew internalises every lesson, sacrifices his relationship, injures himself, and eventually has a public breakdown — only to reconcile with Fletcher in a final performance that plays, depending on how you read it, as either triumph or tragedy.</p>
+
+      <p>The film ends on Andrew's face mid-solo, eyes wild, finally getting the nod from Fletcher. The audience applauds. The screen cuts to black.</p>
+
+      <h2>What Works</h2>
+      <p>Damien Chazelle shoots the rehearsal sequences like action films. The editing is percussive, the camera restless, and the sound design puts you inside the kit in a way that makes your pulse sync to the tempo. Miles Teller is extraordinary — physically committed, emotionally raw, and convincing as both a kid desperate for approval and someone slowly losing himself to obsession.</p>
+
+      <p>J.K. Simmons won the Oscar and deserved it. Fletcher is genuinely frightening not because he screams — though he does — but because his logic is seductive. He makes you believe, for stretches, that cruelty might be the price of excellence. The film earns that ambiguity because Simmons plays Fletcher as someone who also believes it completely.</p>
+
+      <h2>What Doesn't</h2>
+      <p>The film is so locked inside Andrew's perspective that it occasionally loses critical distance from him. His girlfriend is written almost entirely as an obstacle to his ambition — she exists to be broken up with, which happens in a scene so cold it's almost satirical. The film seems unbothered by this, which is fine as a character choice but worth naming as a limitation.</p>
+
+      <p>There's also a question of realism that the film waves away. Professional jazz musicians have pushed back on whether Fletcher's methods bear any resemblance to actual conservatory culture. That's not necessarily a flaw — Whiplash is parable, not documentary — but viewers who expect authenticity may find the heightened reality jarring.</p>
+
+      <h2>Themes</h2>
+
+      <div class="pull-quote">"Good job are the most harmful words in the English language."</div>
+
+      <p>Whiplash is most interesting when read not as a film about music but as a film about the mythology of greatness — and who gets to define it. Fletcher's worldview is coherent and internally consistent: the only way to produce a Charlie Parker is to push someone past comfort, past humiliation, past breaking. The film presents this view with enormous force and then — crucially — never fully dismantles it.</p>
+
+      <p>The ending is where Chazelle plays his most provocative card. Andrew defies Fletcher, takes over the performance, and delivers something transcendent. Fletcher, in the final beats, seems genuinely moved. They reach each other through music in a way they couldn't through any human exchange. It reads, on the surface, as vindication — for both of them.</p>
+
+      <p>But look at what Andrew has given up to get there. His relationship. His health. His ability to function in a room without scanning for approval or threat. The film asks whether the performance was worth it without ever quite answering. That ambiguity is either its greatest strength or its most irresponsible move, depending on your read.</p>
+
+      <p>What Whiplash captures with uncomfortable precision is how abuse can disguise itself as mentorship, and how desperately some people need to believe the disguise is real. Andrew doesn't just tolerate Fletcher's methods — he seeks them out, internalises them, applies them to himself. The film understands that dynamic better than almost anything else made in the last decade. Whether it endorses it is the question it leaves deliberately open.</p>
+
+      <div class="verdict-box">
+        <h3>The Verdict</h3>
+        <p>A masterclass in craft that asks a genuinely difficult question and has the integrity not to answer it cleanly. It will make you feel the pull of Fletcher's logic even as something in you resists it. That tension is the point. Watch it. Then argue with someone about the ending.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <span>Cut to Black</span>
+    <span>Full spoilers. Always.</span>
+  </footer>
+
+  <script>
+    function showReview() {
+      document.getElementById('home-view').style.display = 'none';
+      document.getElementById('review-view').classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
+    function showHome() {
+      document.getElementById('home-view').style.display = 'block';
+      document.getElementById('review-view').classList.remove('active');
+      window.scrollTo(0, 0);
+    }
+  </script>
+
+</body>
+</html>
